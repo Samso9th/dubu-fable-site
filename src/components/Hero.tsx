@@ -96,11 +96,20 @@ export function Hero({ started }: { started: boolean }) {
       id="top"
       className="relative flex min-h-svh items-center overflow-hidden pb-20 pt-28 lg:pb-8 lg:pt-16"
     >
-      {/* background glows */}
+      {/* background glows — radial gradients (same soft glow, no blur-filter cost) */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute right-[-10%] top-[-20%] h-[640px] w-[640px] rounded-full bg-gold/[0.07] blur-[140px]" />
-        <div className="absolute bottom-[-25%] left-[-5%] h-[520px] w-[520px] rounded-full bg-wa/[0.08] blur-[120px]" />
-        <div className="absolute left-1/2 top-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/[0.04] blur-[100px]" />
+        <div
+          className="absolute right-[-18%] top-[-28%] h-[820px] w-[820px] rounded-full"
+          style={{ background: "radial-gradient(circle, hsl(40 90% 49% / 0.12), transparent 62%)" }}
+        />
+        <div
+          className="absolute bottom-[-32%] left-[-12%] h-[700px] w-[700px] rounded-full"
+          style={{ background: "radial-gradient(circle, hsl(142 70% 49% / 0.14), transparent 62%)" }}
+        />
+        <div
+          className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{ background: "radial-gradient(circle, hsl(40 90% 49% / 0.08), transparent 66%)" }}
+        />
       </div>
 
       <div className="relative z-10 mx-auto grid w-full max-w-7xl items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.15fr_1fr] lg:gap-8">
