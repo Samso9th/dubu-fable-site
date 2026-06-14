@@ -1,6 +1,19 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import { gsap, useGSAP, prefersReducedMotion } from "../lib/gsap";
 import { NAV_LINKS, SOCIALS, WAITLIST_URL } from "../data/content";
+
+const LEGAL_LINKS = [
+  { to: "/privacy", label: "Privacy" },
+  { to: "/terms", label: "Terms" },
+  { to: "/cookies", label: "Cookies" },
+];
+
+const COMPANY_LINKS = [
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+  { to: "/careers", label: "Careers" },
+];
 
 export function Footer() {
   const root = useRef<HTMLElement>(null);
@@ -29,7 +42,7 @@ export function Footer() {
   return (
     <footer ref={root} className="overflow-hidden border-t border-line bg-ink-soft">
       <div className="mx-auto max-w-7xl px-5 pt-16 sm:px-8">
-        <div className="grid gap-12 pb-16 sm:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-12 pb-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-2.5">
               <img src="/icon.png" alt="" className="h-9 w-9 rounded-lg" />
@@ -66,6 +79,22 @@ export function Footer() {
           </div>
 
           <div>
+            <p className="kicker mb-5 text-mist/60">Company</p>
+            <ul className="space-y-3">
+              {COMPANY_LINKS.map((l) => (
+                <li key={l.to}>
+                  <Link
+                    to={l.to}
+                    className="text-sm text-mist transition-colors hover:text-cream"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
             <p className="kicker mb-5 text-mist/60">Follow</p>
             <ul className="space-y-3">
               {SOCIALS.map((s) => (
@@ -84,8 +113,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-3 border-t border-line py-6 text-xs text-mist/60 sm:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-line py-6 text-xs text-mist/60 sm:flex-row">
           <span>© {new Date().getFullYear()} Dubu. All rights reserved.</span>
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            {LEGAL_LINKS.map((l) => (
+              <Link key={l.to} to={l.to} className="transition-colors hover:text-cream">
+                {l.label}
+              </Link>
+            ))}
+          </div>
           <span>Built for WhatsApp. Powered by Dubu Business API.</span>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import Lenis from "lenis";
 import { gsap, ScrollTrigger, prefersReducedMotion } from "./lib/gsap";
 import { Preloader } from "./components/Preloader";
@@ -14,8 +15,25 @@ import { Trust } from "./components/Trust";
 import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
+import { LegalPage } from "./components/LegalPage";
+import { InfoPage } from "./components/InfoPage";
 
 export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<InfoPage slug="about" />} />
+      <Route path="/contact" element={<InfoPage slug="contact" />} />
+      <Route path="/careers" element={<InfoPage slug="careers" />} />
+      <Route path="/privacy" element={<LegalPage slug="privacy" />} />
+      <Route path="/terms" element={<LegalPage slug="terms" />} />
+      <Route path="/cookies" element={<LegalPage slug="cookies" />} />
+      <Route path="*" element={<Home />} />
+    </Routes>
+  );
+}
+
+function Home() {
   const [ready, setReady] = useState(false);
   const lenisRef = useRef<Lenis | null>(null);
 
