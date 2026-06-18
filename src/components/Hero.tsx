@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "../lib/gsap";
 import { PhoneChat } from "./PhoneChat";
-import { HERO_CHAT, FLAGS, WAITLIST_URL } from "../data/content";
+import { HERO_CHAT, WAITLIST_URL } from "../data/content";
 
 const LINES = [
   { text: "Send money", cls: "text-cream" },
@@ -151,7 +151,7 @@ export function Hero({ started }: { started: boolean }) {
               rel="noreferrer"
               className="btn-gold inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold"
             >
-              Get Early Access <span aria-hidden>→</span>
+              Get Started <span aria-hidden>→</span>
             </a>
             <a
               href="#how-it-works"
@@ -159,20 +159,6 @@ export function Hero({ started }: { started: boolean }) {
             >
               See how it works
             </a>
-          </div>
-
-          <div data-fade className="mt-12 opacity-0">
-            <p className="kicker mb-3 text-mist/70">Trusted in</p>
-            <div className="flex gap-2 text-2xl">
-              {FLAGS.map((f) => (
-                <span
-                  key={f}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-line bg-ink-soft"
-                >
-                  {f}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 

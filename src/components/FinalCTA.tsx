@@ -58,21 +58,13 @@ export function FinalCTA() {
           data-reveal
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <span className="relative inline-flex flex-col items-center gap-2.5 pt-3">
-            <span className="absolute -top-0.5 z-10 rounded-full border border-gold/60 bg-ink px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-gold shadow-[0_4px_16px_-4px_rgba(0,0,0,0.6)]">
-              Coming soon
-            </span>
-            <span className="btn-gold inline-flex cursor-not-allowed items-center gap-2 rounded-full px-8 py-4 font-semibold opacity-70">
-              Chat on WhatsApp
-            </span>
-          </span>
           <a
             href={WAITLIST_URL}
             target="_blank"
             rel="noreferrer"
-            className="btn-ghost inline-flex items-center gap-2 rounded-full px-8 py-4 font-medium text-cream"
+            className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold"
           >
-            Join the Waitlist <span aria-hidden>→</span>
+            Chat on WhatsApp <span aria-hidden>→</span>
           </a>
         </div>
       </div>

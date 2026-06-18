@@ -58,7 +58,7 @@ export function Footer() {
               rel="noreferrer"
               className="btn-gold mt-6 inline-flex rounded-full px-6 py-3 text-sm font-semibold"
             >
-              Get Early Access
+              Get Started
             </a>
           </div>
 

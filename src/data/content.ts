@@ -1,5 +1,4 @@
-export const WAITLIST_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSeqy_3hXPE3573E23muBDmlDdhtUVWEpwKJQi2ZhJad3rb1Qg/viewform?usp=header";
+export const WAITLIST_URL = "https://wa.link/ohbg8e";
 
 export const SOCIALS = [
   { label: "Twitter / X", href: "https://x.com/dubupay" },
@@ -143,7 +142,7 @@ export const NEW_WAY = [
 ];
 
 export const PIDGIN_LINE =
-  "E don send! Your mama go receive am for 2 minutes ✅";
+  "Money don enter! Dem go see am sharp-sharp ✅";
 
 export type Moment = {
   category: string;

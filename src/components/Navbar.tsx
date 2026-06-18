@@ -67,7 +67,7 @@ export function Navbar({ started }: { started: boolean }) {
               rel="noreferrer"
               className="btn-gold hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
             >
-              Get Early Access
+              Get Started
             </a>
             <button
               onClick={() => setOpen(!open)}
@@ -120,7 +120,7 @@ export function Navbar({ started }: { started: boolean }) {
           }`}
           style={{ transitionDelay: open ? "400ms" : "0ms" }}
         >
-          Get Early Access
+          Get Started
         </a>
       </div>
     </>
