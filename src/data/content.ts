@@ -20,6 +20,8 @@ export const TICKER_ITEMS = [
   "50+ countries",
   "Dubu never sleeps",
   "60–80% cheaper than banks",
+  "Receive & send USD from $1",
+  "USD: $1 under $300 · $2.50 to $1k · 0.4% above",
   "Rates locked at send time",
 ];
 
