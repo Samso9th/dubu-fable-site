@@ -76,7 +76,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
           {
             title: "Chat with Us",
             description: "The fastest way to reach us — right on WhatsApp.",
-            action: { label: "Chat on WhatsApp", href: "https://wa.link/ohbg8e" },
+            action: { label: "Chat on WhatsApp", href: "https://wa.link/6l25x0" },
           },
           {
             title: "Email Us",

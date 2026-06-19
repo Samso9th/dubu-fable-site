@@ -1,4 +1,4 @@
-export const WAITLIST_URL = "https://wa.link/ohbg8e";
+export const WAITLIST_URL = "https://wa.link/6l25x0";
 
 export const SOCIALS = [
   { label: "Twitter / X", href: "https://x.com/dubupay" },
