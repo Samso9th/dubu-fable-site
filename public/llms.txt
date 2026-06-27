@@ -1,0 +1,93 @@
+# Dubu
+
+## About
+Dubu is the first international payment experience built natively for WhatsApp. It lets you send money across borders without downloading any app, creating an account, or navigating complex menus — just chat with Dubu on WhatsApp and money moves. Text it, say it, or snap a photo of an account number and Dubu handles the rest. Recipients receive funds directly to their bank accounts or mobile wallets — they don't need Dubu or any app to receive money.
+
+## How It Works
+1. Save our number — add Dubu to your WhatsApp contacts. One number for all your international transfers.
+2. Start a chat — say "hi" or send money instructions naturally. Dubu understands what you need.
+3. Send globally — money moves instantly to bank accounts or mobile wallets across 50+ countries.
+
+## What You Can Do
+
+### Send money
+Type naturally — "Abeg send $100 go Lagos" works. Dubu confirms the rate, the fee, and the recipient before sending. Voice notes and photos of receipts/account numbers are also understood.
+
+### Check rates
+Ask for today's rates at any time. Rates lock for 60 seconds when you send — no hidden markups, no surprises. Typically 60–80% cheaper than traditional banks.
+
+### Snap a bill
+Send a photo of a bill, invoice, or handwritten account number. Dubu reads it and handles the payment — confirm to send.
+
+### Bill payments
+Pay airtime, data, DSTV, electricity, and more — just ask Dubu to handle it.
+
+### Crypto (USDT)
+Sell USDT directly to your wallet at live rates without P2P hassle.
+
+## Supported Scenarios
+- Family remittances: send to parents, siblings, relatives across borders
+- Market payments: snap an account number, Dubu pays it
+- Data & airtime top-ups: recharge any network without switching apps
+- Salary splitting: describe how to split an incoming payment and Dubu routes it
+- Friend transfers: send urgently when banking apps are down
+- Crypto off-ramps: sell USDT to NGN at competitive rates
+
+## Pricing
+- USD transfers: $1 flat under $300 · $2.50 flat from $300–$1,000 · 0.4% above $1,000
+- Typically 60–80% cheaper than traditional banks
+- Rates are locked at send time — no mid-transfer changes
+- Zero setup cost
+
+## Coverage
+- Send from: UK, US, Canada, and major European countries
+- Send to: 50+ countries including Nigeria, Ghana, Kenya, South Africa, Uganda, Tanzania, India, Philippines, and more
+- Supported currencies: USD, NGN, GBP, EUR, and more
+
+## Security & Trust
+- 256-bit encryption on all conversations and transactions
+- PCI DSS compliant
+- Biometric verification
+- PIN confirmation per transaction
+- Payments processed through Interswitch — Africa's leading payment technology company
+- Deposits held in NDIC-insured accounts — same statutory protection as a Nigerian bank deposit
+- End-to-end encrypted chats — Dubu only sees the transaction details needed to process your transfer
+
+## Partners & Infrastructure
+- Powered by Dubu Business API — the same payment infrastructure trusted by merchants across Africa
+- Interswitch & Daya: card and bank transfer processing
+- NDIC-insured via Interswitch
+
+## Contact & Sign Up
+- Join the waitlist / start on WhatsApp: https://wa.link/6l25x0
+- Website: https://www.dubupay.com
+- Twitter/X: https://x.com/dubupay
+- LinkedIn: https://www.linkedin.com/company/dubupay/
+- Instagram: https://www.instagram.com/dubupay
+- Support: support@dubupay.com
+
+## Frequently Asked Questions
+
+Q: Do recipients need to install Dubu?
+A: No. Recipients receive money directly to their bank account or mobile wallet. They don't need any app or account.
+
+Q: Is Dubu available in my country?
+A: You can send from the UK, US, Canada, and major European countries to 50+ countries including Nigeria, Ghana, Kenya, South Africa, Uganda, Tanzania, India, and the Philippines.
+
+Q: How fast are transfers?
+A: Most transfers arrive within minutes. Bank transfers typically complete in 5–30 minutes depending on the destination. You receive real-time updates in your WhatsApp chat.
+
+Q: Is my chat data private?
+A: Your conversations are end-to-end encrypted. Dubu only sees the transaction details necessary to process your transfer — never your personal messages.
+
+Q: What are the fees?
+A: USD transfers: $1 flat under $300, $2.50 to $1,000, and 0.4% above $1,000. Always shown before you confirm — no hidden fees.
+
+Q: Can I send using voice notes or photos?
+A: Yes. Send a voice note with transfer instructions or snap a photo of an account number or bill — Dubu reads it and asks you to confirm before sending.
+
+Q: How do I track my transfer?
+A: Ask "Where's my transfer?" in chat and Dubu will give you real-time status. You also receive automatic notifications when money is sent, in transit, and delivered.
+
+Q: What is Dubu built on?
+A: Dubu is powered by the Dubu Business API and processes payments through Interswitch. Deposits are held in NDIC-insured accounts.
