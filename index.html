@@ -25,6 +25,17 @@
     <meta name="twitter:description" content="Send money worldwide without leaving WhatsApp. Text it, say it, or snap it — Dubu handles the rest." />
     <meta name="twitter:image" content="https://www.dubupay.com/meta_img.png" />
     <meta name="theme-color" content="#06150d" />
+    <script>
+      (function () {
+        var ids = ["whatsapp", "telegram", "slack", "discord"];
+        var t = new URLSearchParams(location.search).get("platform");
+        try {
+          t = ids.indexOf(t) > -1 ? t : localStorage.getItem("dubu-platform");
+        } catch (e) {}
+        document.documentElement.dataset.theme =
+          ids.indexOf(t) > -1 ? t : "whatsapp";
+      })();
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

@@ -2,9 +2,11 @@ import { useRef } from "react";
 import { gsap, useGSAP, revealUp, prefersReducedMotion } from "../lib/gsap";
 import { SectionHeading } from "./SectionHeading";
 import { OLD_WAY, NEW_WAY, PIDGIN_LINE } from "../data/content";
+import { usePlatform } from "../lib/theme";
 
 export function BeforeAfter() {
   const root = useRef<HTMLElement>(null);
+  const { platform } = usePlatform();
 
   useGSAP(
     () => {
@@ -93,7 +95,7 @@ export function BeforeAfter() {
           <div data-col data-reveal>
             <p className="kicker mb-6 text-gold-deep">With Dubu</p>
             <div data-new-list className="space-y-4">
-              {NEW_WAY.map((item) => (
+              {NEW_WAY(platform.name).map((item) => (
                 <div
                   key={item.text}
                   data-new-item
@@ -104,12 +106,12 @@ export function BeforeAfter() {
                   <span
                     className={`max-w-[85%] px-5 py-3.5 text-lg shadow-md sm:text-xl ${
                       item.from === "user"
-                        ? "rounded-[18px_18px_4px_18px] bg-wa-soft text-cream"
+                        ? "rounded-[18px_18px_4px_18px] bg-accent-soft text-cream"
                         : "rounded-[18px_18px_18px_4px] bg-white text-pine"
                     }`}
                   >
                     {item.from === "dubu" && (
-                      <span className="mr-1.5 text-wa">✓</span>
+                      <span className="mr-1.5 text-accent">✓</span>
                     )}
                     {item.text}
                   </span>

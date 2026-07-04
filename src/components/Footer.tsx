@@ -1,7 +1,8 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap, useGSAP, prefersReducedMotion } from "../lib/gsap";
-import { NAV_LINKS, SOCIALS, WAITLIST_URL } from "../data/content";
+import { NAV_LINKS, SOCIALS } from "../data/content";
+import { usePlatform } from "../lib/theme";
 
 const LEGAL_LINKS = [
   { to: "/privacy", label: "Privacy" },
@@ -17,6 +18,7 @@ const COMPANY_LINKS = [
 
 export function Footer() {
   const root = useRef<HTMLElement>(null);
+  const { platform } = usePlatform();
 
   useGSAP(
     () => {
@@ -49,11 +51,11 @@ export function Footer() {
               <span className="font-display text-2xl tracking-wide">DUBU</span>
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-mist">
-              Send money worldwide without leaving WhatsApp. The simplest way
-              to make international payments.
+              Send money worldwide without leaving {platform.name}. The
+              simplest way to make international payments.
             </p>
             <a
-              href={WAITLIST_URL}
+              href={platform.ctaUrl}
               target="_blank"
               rel="noreferrer"
               className="btn-gold mt-6 inline-flex rounded-full px-6 py-3 text-sm font-semibold"
@@ -122,7 +124,10 @@ export function Footer() {
               </Link>
             ))}
           </div>
-          <span>Built for WhatsApp. Powered by Dubu Business API.</span>
+          <span>
+            Works on WhatsApp · Telegram · Slack · Discord. Powered by Dubu
+            Business API.
+          </span>
         </div>
       </div>
 

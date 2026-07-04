@@ -1,11 +1,44 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
-import { NAV_LINKS, WAITLIST_URL } from "../data/content";
+import { NAV_LINKS } from "../data/content";
+import { usePlatform } from "../lib/theme";
+import { PLATFORM_IDS, PLATFORMS } from "../data/platforms";
+import { PlatformIcon } from "./PlatformIcons";
+
+function PlatformSwitcher({ className = "" }: { className?: string }) {
+  const { platformId, setPlatform } = usePlatform();
+  return (
+    <div
+      role="radiogroup"
+      aria-label="Chat platform"
+      className={`flex items-center gap-1 rounded-full border border-line p-1 ${className}`}
+    >
+      {PLATFORM_IDS.map((id) => (
+        <button
+          key={id}
+          role="radio"
+          aria-checked={platformId === id}
+          aria-label={`Switch to ${PLATFORMS[id].name}`}
+          title={PLATFORMS[id].name}
+          onClick={() => setPlatform(id)}
+          className={`flex h-7 w-7 items-center justify-center rounded-full transition-colors duration-300 ${
+            platformId === id
+              ? "bg-accent/15 text-accent"
+              : "text-mist hover:text-cream"
+          }`}
+        >
+          <PlatformIcon id={id} size={13} />
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function Navbar({ started }: { started: boolean }) {
   const root = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { platform } = usePlatform();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -61,8 +94,9 @@ export function Navbar({ started }: { started: boolean }) {
           </div>
 
           <div className="flex items-center gap-3">
+            <PlatformSwitcher className="hidden md:flex" />
             <a
-              href={WAITLIST_URL}
+              href={platform.ctaUrl}
               target="_blank"
               rel="noreferrer"
               className="btn-gold hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
@@ -111,17 +145,25 @@ export function Navbar({ started }: { started: boolean }) {
             </a>
           ))}
         </nav>
-        <a
-          href={WAITLIST_URL}
-          target="_blank"
-          rel="noreferrer"
-          className={`btn-gold mt-10 inline-flex w-fit rounded-full px-7 py-3.5 font-semibold transition-all duration-500 ${
+        <div
+          className={`mt-10 flex flex-col gap-6 transition-all duration-500 ${
             open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
           }`}
           style={{ transitionDelay: open ? "400ms" : "0ms" }}
         >
-          Get Started
-        </a>
+          <div className="flex items-center gap-3">
+            <span className="kicker text-mist">Platform</span>
+            <PlatformSwitcher />
+          </div>
+          <a
+            href={platform.ctaUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn-gold inline-flex w-fit rounded-full px-7 py-3.5 font-semibold"
+          >
+            Get Started
+          </a>
+        </div>
       </div>
     </>
   );

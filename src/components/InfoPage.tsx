@@ -1,7 +1,9 @@
 import { PageChrome } from "./PageChrome";
 import { INFO_PAGES, type InfoSlug, type Block } from "../data/pages";
+import { usePlatform } from "../lib/theme";
 
 function BlockView({ block }: { block: Block }) {
+  const { platform } = usePlatform();
   if (block.type === "text") {
     return (
       <section>
@@ -41,12 +43,14 @@ function BlockView({ block }: { block: Block }) {
               )}
               {c.action && (
                 <a
-                  href={c.action.href}
+                  href={c.action.platformCta ? platform.ctaUrl : c.action.href}
                   target={c.action.href.startsWith("http") ? "_blank" : undefined}
                   rel={c.action.href.startsWith("http") ? "noreferrer" : undefined}
                   className="mt-5 inline-flex rounded-full border border-line px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:border-gold/60 hover:text-gold"
                 >
-                  {c.action.label}
+                  {c.action.platformCta
+                    ? `Chat on ${platform.name}`
+                    : c.action.label}
                 </a>
               )}
             </div>

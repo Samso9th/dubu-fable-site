@@ -14,6 +14,7 @@ export const NAV_LINKS = [
 ];
 
 export const TICKER_ITEMS = [
+  "WhatsApp · Telegram · Slack · Discord",
   "$0 setup cost",
   "One word to confirm",
   "Text · Voice · Photo",
@@ -137,8 +138,8 @@ export const OLD_WAY = [
   "Pay hidden fees",
 ];
 
-export const NEW_WAY = [
-  { text: "Open WhatsApp", from: "user" as const },
+export const NEW_WAY = (platformName: string) => [
+  { text: `Open ${platformName}`, from: "user" as const },
   { text: "“Send $200 to Mama”", from: "user" as const },
   { text: "Done. She receives it in minutes.", from: "dubu" as const },
 ];
@@ -204,11 +205,11 @@ export const MOMENTS: Moment[] = [
   },
 ];
 
-export const STEPS = [
+export const STEPS = (platformName: string) => [
   {
     num: "01",
-    title: "Save our number",
-    body: "Add Dubu to your WhatsApp contacts. One number for all your international transfers.",
+    title: platformName === "WhatsApp" ? "Save our number" : "Add Dubu",
+    body: `Add Dubu to your ${platformName} contacts. One contact for all your international transfers.`,
   },
   {
     num: "02",
@@ -222,14 +223,14 @@ export const STEPS = [
   },
 ];
 
-export const FEATURES = [
+export const FEATURES = (platformName: string) => [
   {
     title: "Chat to send",
     body: "Save Dubu as a contact. Send money by simply chatting — like texting a friend.",
   },
   {
     title: "Instant receipts",
-    body: "Real-time updates on rates, transfers, and receipts delivered to your WhatsApp.",
+    body: `Real-time updates on rates, transfers, and receipts delivered to your ${platformName} chat.`,
   },
   {
     title: "Contact sync",

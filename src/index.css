@@ -21,8 +21,8 @@
   /* Brand */
   --color-gold: hsl(42 92% 52%);
   --color-gold-deep: hsl(38 86% 42%);
-  --color-wa: hsl(142 69% 45%);
-  --color-wa-soft: hsl(142 45% 22%);
+  --color-accent: hsl(142 69% 45%);
+  --color-accent-soft: hsl(142 45% 22%);
 
   /* Text */
   --color-cream: hsl(45 35% 96%);
@@ -38,6 +38,93 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Platform theme vars (WhatsApp defaults) ──
+   Swapped per platform via html[data-theme=...]. Colors only — layout and
+   animation never change between themes. */
+:root {
+  --glow-accent: hsl(142 70% 49% / 0.14);
+  --glow-accent-strong: hsl(142 70% 49% / 0.35);
+
+  --bubble-sent-bg: hsl(142 45% 20%);
+  --bubble-sent-fg: var(--color-cream);
+  --bubble-sent-radius: 14px 14px 4px 14px;
+  --bubble-received-bg: hsl(148 28% 14%);
+  --bubble-received-fg: var(--color-cream);
+  --bubble-received-radius: 14px 14px 14px 4px;
+
+  --phone-screen-bg: hsl(150 30% 7%);
+  --phone-screen-image: url(/whatsapp-dark.png);
+  --phone-screen-overlay: hsl(152 46% 5% / 0.72);
+  --phone-screen-fg: var(--color-cream);
+  --phone-chrome-bg: var(--color-ink-soft);
+  --phone-chrome-fg: var(--color-cream);
+  --phone-input-bg: var(--color-ink);
+  --phone-muted: var(--color-mist);
+  --phone-line: var(--color-line);
+  --receipt-color: hsl(202 89% 60%);
+}
+
+html[data-theme="telegram"] {
+  --color-accent: hsl(199 84% 55%);
+  --color-accent-soft: hsl(207 45% 24%);
+  --glow-accent: hsl(199 84% 55% / 0.14);
+  --glow-accent-strong: hsl(199 84% 55% / 0.35);
+
+  --bubble-sent-bg: hsl(210 47% 32%);
+  --bubble-sent-radius: 16px 16px 4px 16px;
+  --bubble-received-bg: hsl(213 30% 15%);
+  --bubble-received-radius: 16px 16px 16px 4px;
+
+  --phone-screen-bg: hsl(212 39% 9%);
+  --phone-screen-image: linear-gradient(160deg, hsl(210 40% 13%), hsl(222 38% 7%));
+  --phone-screen-overlay: transparent;
+  --phone-chrome-bg: hsl(207 30% 13%);
+  --phone-input-bg: hsl(210 32% 17%);
+  --phone-line: hsl(210 28% 20%);
+  --receipt-color: hsl(199 84% 60%);
+}
+
+html[data-theme="slack"] {
+  /* Site accent is a lightened aubergine — authentic #4A154B fails contrast
+     on ink, so the true brand color lives on the phone header instead. */
+  --color-accent: hsl(291 38% 56%);
+  --color-accent-soft: hsl(291 40% 22%);
+  --glow-accent: hsl(291 45% 55% / 0.13);
+  --glow-accent-strong: hsl(291 45% 55% / 0.32);
+
+  --bubble-sent-bg: hsl(291 40% 24%);
+  --bubble-received-bg: hsl(288 14% 14%);
+
+  --phone-screen-bg: hsl(40 20% 97%);
+  --phone-screen-image: none;
+  --phone-screen-overlay: transparent;
+  --phone-screen-fg: hsl(264 12% 12%);
+  --phone-chrome-bg: hsl(282 57% 19%);
+  --phone-chrome-fg: hsl(0 0% 100%);
+  --phone-input-bg: hsl(0 0% 100%);
+  --phone-muted: hsl(280 4% 42%);
+  --phone-line: hsl(40 14% 84%);
+}
+
+html[data-theme="discord"] {
+  --color-accent: hsl(235 86% 65%);
+  --color-accent-soft: hsl(235 40% 26%);
+  --glow-accent: hsl(235 86% 65% / 0.15);
+  --glow-accent-strong: hsl(235 86% 65% / 0.35);
+
+  --bubble-sent-bg: hsl(235 40% 26%);
+  --bubble-received-bg: hsl(225 8% 16%);
+
+  --phone-screen-bg: hsl(220 8% 21%);
+  --phone-screen-image: none;
+  --phone-screen-overlay: transparent;
+  --phone-screen-fg: hsl(220 13% 87%);
+  --phone-chrome-bg: hsl(225 7% 13%);
+  --phone-input-bg: hsl(228 6% 24%);
+  --phone-muted: hsl(215 9% 58%);
+  --phone-line: hsl(225 7% 11%);
 }
 
 html {
@@ -177,27 +264,36 @@ body {
 
 /* ── Chat bubbles ── */
 .bubble-sent {
-  background: hsl(142 45% 20%);
-  border-radius: 14px 14px 4px 14px;
+  background: var(--bubble-sent-bg);
+  color: var(--bubble-sent-fg);
+  border-radius: var(--bubble-sent-radius);
 }
 
 .bubble-received {
-  background: hsl(148 28% 14%);
-  border-radius: 14px 14px 14px 4px;
+  background: var(--bubble-received-bg);
+  color: var(--bubble-received-fg);
+  border-radius: var(--bubble-received-radius);
 }
 
-.phone-light .bubble-sent {
-  background: hsl(100 55% 88%);
-  color: hsl(150 40% 12%);
+/* ── Phone screen (messages area) ── */
+.phone-screen {
+  background-color: var(--phone-screen-bg);
+  background-image: var(--phone-screen-image);
+  background-size: 360px;
+  color: var(--phone-screen-fg);
 }
 
-.phone-light .bubble-received {
-  background: hsl(0 0% 100%);
-  color: hsl(150 40% 12%);
+.phone-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: var(--phone-screen-overlay);
 }
 
 /* typing dots */
 .typing-dot {
+  background: var(--phone-muted);
   animation: typingBounce 1.2s ease-in-out infinite;
 }
 .typing-dot:nth-child(2) { animation-delay: 0.15s; }
@@ -295,13 +391,13 @@ body {
 
 /* phone frame */
 .phone-frame {
-  background: hsl(150 30% 7%);
+  background: var(--phone-screen-bg);
   border: 1px solid hsl(150 22% 20%);
   box-shadow:
     0 0 0 10px hsl(150 25% 10%),
     0 0 0 11px hsl(150 20% 22%),
     0 40px 80px -24px hsl(152 60% 2% / 0.9),
-    0 0 120px -40px hsl(42 92% 52% / 0.35);
+    0 0 120px -40px var(--glow-accent-strong);
 }
 
 /* initial-hidden elements revealed by GSAP — avoid FOUC flash of unstyled position */

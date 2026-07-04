@@ -4,11 +4,13 @@ import { useMediaQuery } from "../lib/hooks";
 import { SectionHeading } from "./SectionHeading";
 import { PhoneChat } from "./PhoneChat";
 import { DEMO_TABS } from "../data/content";
+import { usePlatform } from "../lib/theme";
 
 export function ChatShowcase() {
   const root = useRef<HTMLElement>(null);
   const [active, setActive] = useState(0);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const { platformId } = usePlatform();
 
   useGSAP(
     () => {
@@ -68,7 +70,7 @@ export function ChatShowcase() {
             <div className="relative">
               <div className="sticky top-[max(6rem,calc(50vh-280px))]">
                 <PhoneChat
-                  key={active}
+                  key={`${active}-${platformId}`}
                   messages={DEMO_TABS[active].messages}
                   mode="instant"
                 />
@@ -105,7 +107,7 @@ export function ChatShowcase() {
 
             <div className="mt-8">
               <PhoneChat
-                key={active}
+                key={`${active}-${platformId}`}
                 messages={DEMO_TABS[active].messages}
                 mode="instant"
               />

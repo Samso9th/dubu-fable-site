@@ -1,9 +1,10 @@
 import { useRef } from "react";
 import { gsap, useGSAP, revealUp, prefersReducedMotion } from "../lib/gsap";
-import { WAITLIST_URL } from "../data/content";
+import { usePlatform } from "../lib/theme";
 
 export function FinalCTA() {
   const root = useRef<HTMLElement>(null);
+  const { platform } = usePlatform();
 
   useGSAP(
     () => {
@@ -59,12 +60,12 @@ export function FinalCTA() {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <a
-            href={WAITLIST_URL}
+            href={platform.ctaUrl}
             target="_blank"
             rel="noreferrer"
             className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold"
           >
-            Chat on WhatsApp <span aria-hidden>→</span>
+            Chat on {platform.name} <span aria-hidden>→</span>
           </a>
         </div>
       </div>

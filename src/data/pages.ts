@@ -6,7 +6,11 @@ export type Block =
   | {
       type: "cards";
       heading?: string;
-      items: { title: string; description?: string; action?: { label: string; href: string } }[];
+      items: {
+        title: string;
+        description?: string;
+        action?: { label: string; href: string; platformCta?: boolean };
+      }[];
     }
   | {
       type: "jobs";
@@ -29,13 +33,13 @@ interface InfoDoc {
 export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
   about: {
     title: "About Dubu",
-    lead: "Dubu is the first international payment experience built natively for WhatsApp. We make it possible to send money worldwide by simply chatting — no apps, no forms, no friction.",
+    lead: "Dubu is the first international payment experience built natively for the chat apps you already use — WhatsApp, Telegram, Slack, and Discord. We make it possible to send money worldwide by simply chatting — no apps, no forms, no friction.",
     blocks: [
       {
         type: "text",
         heading: "Our Mission",
         body: [
-          "Billions of people use WhatsApp every day. Yet sending money internationally still requires downloading separate apps, navigating complex interfaces, and paying hidden fees. We believe payments should be as simple as sending a message. Dubu brings that vision to life.",
+          "Billions of people live inside chat apps like WhatsApp, Telegram, Slack, and Discord every day. Yet sending money internationally still requires downloading separate apps, navigating complex interfaces, and paying hidden fees. We believe payments should be as simple as sending a message. Dubu brings that vision to life.",
         ],
       },
       {
@@ -45,7 +49,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
           {
             title: "Speed",
             description:
-              "Money should move as fast as a WhatsApp message. We're building payment infrastructure that keeps up with how people actually communicate.",
+              "Money should move as fast as a chat message. We're building payment infrastructure that keeps up with how people actually communicate.",
           },
           {
             title: "Accessibility",
@@ -75,8 +79,13 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
         items: [
           {
             title: "Chat with Us",
-            description: "The fastest way to reach us — right on WhatsApp.",
-            action: { label: "Chat on WhatsApp", href: "https://wa.link/6l25x0" },
+            description:
+              "The fastest way to reach us — right in your favorite chat app.",
+            action: {
+              label: "Chat with Dubu",
+              href: "https://wa.link/6l25x0",
+              platformCta: true,
+            },
           },
           {
             title: "Email Us",
@@ -106,7 +115,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
             title: "UI/UX Designer",
             meta: "Full-time / Remote",
             description:
-              "We're looking for a UI/UX Designer to shape the visual and interaction design of Dubu's products — from our marketing sites to the conversational payment flows inside WhatsApp.",
+              "We're looking for a UI/UX Designer to shape the visual and interaction design of Dubu's products — from our marketing sites to the conversational payment flows inside chat apps like WhatsApp and Telegram.",
             responsibilities: [
               "Design intuitive user interfaces for web and conversational (chat-based) experiences",
               "Create wireframes, prototypes, and high-fidelity mockups in Figma",

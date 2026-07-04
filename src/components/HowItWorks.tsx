@@ -2,9 +2,11 @@ import { useRef } from "react";
 import { useGSAP, revealUp } from "../lib/gsap";
 import { SectionHeading } from "./SectionHeading";
 import { STEPS } from "../data/content";
+import { usePlatform } from "../lib/theme";
 
 export function HowItWorks() {
   const root = useRef<HTMLElement>(null);
+  const { platform } = usePlatform();
 
   useGSAP(
     () => {
@@ -23,7 +25,7 @@ export function HowItWorks() {
         />
 
         <div className="mt-16 divide-y divide-line border-y border-line">
-          {STEPS.map((step) => (
+          {STEPS(platform.name).map((step) => (
             <div
               key={step.num}
               data-step-row

@@ -1,7 +1,10 @@
 import { useRef } from "react";
 import { gsap, useGSAP, prefersReducedMotion } from "../lib/gsap";
 import { PhoneChat } from "./PhoneChat";
-import { HERO_CHAT, WAITLIST_URL } from "../data/content";
+import { HERO_CHAT } from "../data/content";
+import { usePlatform } from "../lib/theme";
+import { PLATFORM_IDS, PLATFORMS } from "../data/platforms";
+import { PlatformIcon } from "./PlatformIcons";
 
 const LINES = [
   { text: "Send money", cls: "text-cream" },
@@ -18,6 +21,7 @@ const PILLS = [
 
 export function Hero({ started }: { started: boolean }) {
   const root = useRef<HTMLElement>(null);
+  const { platform, platformId, setPlatform } = usePlatform();
 
   useGSAP(
     () => {
@@ -104,7 +108,7 @@ export function Hero({ started }: { started: boolean }) {
         />
         <div
           className="absolute bottom-[-32%] left-[-12%] h-[700px] w-[700px] rounded-full"
-          style={{ background: "radial-gradient(circle, hsl(142 70% 49% / 0.14), transparent 62%)" }}
+          style={{ background: "radial-gradient(circle, var(--glow-accent), transparent 62%)" }}
         />
         <div
           className="absolute left-1/2 top-1/2 h-[460px] w-[460px] -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -139,14 +143,14 @@ export function Hero({ started }: { started: boolean }) {
             data-fade
             className="mt-6 max-w-md text-base leading-relaxed text-mist opacity-0 sm:text-lg"
           >
-            The first international payment experience built natively for
-            WhatsApp. No apps to download, no forms — just save our number and
+            The first international payment experience built natively for{" "}
+            {platform.name}. No apps to download, no forms — just say hi and
             start sending.
           </p>
 
           <div data-fade className="mt-9 flex flex-wrap items-center gap-4 opacity-0">
             <a
-              href={WAITLIST_URL}
+              href={platform.ctaUrl}
               target="_blank"
               rel="noreferrer"
               className="btn-gold inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold"
@@ -159,6 +163,33 @@ export function Hero({ started }: { started: boolean }) {
             >
               See how it works
             </a>
+          </div>
+
+          <div data-fade className="mt-9 flex flex-wrap items-center gap-4 opacity-0">
+            <span className="kicker text-mist">Works on</span>
+            <div
+              role="radiogroup"
+              aria-label="Chat platform"
+              className="flex items-center gap-1.5"
+            >
+              {PLATFORM_IDS.map((id) => (
+                <button
+                  key={id}
+                  role="radio"
+                  aria-checked={platformId === id}
+                  aria-label={`Switch to ${PLATFORMS[id].name}`}
+                  title={PLATFORMS[id].name}
+                  onClick={() => setPlatform(id)}
+                  className={`flex h-9 w-9 items-center justify-center rounded-full border transition-colors duration-300 ${
+                    platformId === id
+                      ? "border-accent/60 bg-accent/10 text-accent"
+                      : "border-line text-mist hover:text-cream"
+                  }`}
+                >
+                  <PlatformIcon id={id} size={15} />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

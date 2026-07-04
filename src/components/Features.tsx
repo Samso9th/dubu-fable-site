@@ -2,11 +2,13 @@ import { useRef } from "react";
 import { useGSAP, revealUp } from "../lib/gsap";
 import { SectionHeading } from "./SectionHeading";
 import { FEATURES } from "../data/content";
+import { usePlatform } from "../lib/theme";
 
 const ICONS = ["💬", "🔔", "👥", "📈"];
 
 export function Features() {
   const root = useRef<HTMLElement>(null);
+  const { platform } = usePlatform();
 
   useGSAP(
     () => {
@@ -25,7 +27,7 @@ export function Features() {
         />
 
         <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {FEATURES.map((f, i) => (
+          {FEATURES(platform.name).map((f, i) => (
             <div
               key={f.title}
               data-card
