@@ -30,18 +30,22 @@ function escapeAttr(s) {
 }
 
 /**
- * Flyers are portrait; preview cards are 1200x630 landscape. Cropping to fill
- * would cut the top and bottom off the design, so we pad onto a matched
- * background instead — the whole flyer stays visible and we can declare exact
- * dimensions, which several crawlers need to render a large card at all.
- * Also caps file size (q_auto, f_auto), since WhatsApp skips heavy images.
+ * Serve the flyer at its own aspect ratio. Forcing it into a 1200x630 landscape
+ * card (c_pad) letterboxed the portrait design with dead space down both sides;
+ * c_limit only ever scales down and never changes the shape, so the card fills
+ * edge to edge the way a natively-sized image does.
+ *
+ * f_jpg rather than f_auto on purpose: f_auto negotiates on the Accept header,
+ * and crawlers that send a plain one get the original PNG (266 KB here vs 219 KB
+ * as JPEG). Explicit JPEG is smaller and universally decodable, which matters —
+ * WhatsApp silently drops previews whose image is too heavy.
  */
 function previewImage(url) {
   if (!url) return null;
   const marker = '/image/upload/';
   const i = url.indexOf(marker);
   if (i === -1) return url; // not a Cloudinary asset — use it as-is
-  const transform = 'c_pad,b_auto,w_1200,h_630,q_auto,f_auto';
+  const transform = 'c_limit,w_1200,q_auto,f_jpg';
   return `${url.slice(0, i + marker.length)}${transform}/${url.slice(i + marker.length)}`;
 }
 
@@ -93,11 +97,14 @@ function buildTags({ title, description, image, url, past }) {
 
   if (image) {
     const img = escapeAttr(image);
+    // No og:image:width/height. Flyers vary in shape and we don't know the
+    // rendered size here — declaring one would either be wrong or force us back
+    // to a fixed-ratio crop. Crawlers measure the image themselves; none of the
+    // ones we care about require the hint to render a large card.
     tags.push(
       `<meta property="og:image" content="${img}" />`,
       `<meta property="og:image:secure_url" content="${img}" />`,
-      `<meta property="og:image:width" content="1200" />`,
-      `<meta property="og:image:height" content="630" />`,
+      `<meta property="og:image:type" content="image/jpeg" />`,
       `<meta property="og:image:alt" content="${t}${past ? '' : ' — event flyer'}" />`,
       `<meta name="twitter:image" content="${img}" />`,
       `<meta name="twitter:image:alt" content="${t}" />`
