@@ -15,7 +15,9 @@
 
 export const config = { runtime: 'edge' };
 
-const API_BASE = (process.env.VITE_API_URL || 'https://api.dubupay.com').replace(/\/$/, '');
+// dubu-social, NOT api.dubupay.com — that host is the separate dubu-api service
+// and 404s on /public/seminar. Same base the admin dashboard talks to.
+const API_BASE = (process.env.VITE_API_URL || 'https://lapai.dubupay.com').replace(/\/$/, '');
 const SITE = 'https://www.dubupay.com';
 const API_TIMEOUT_MS = 2500;
 

@@ -7,7 +7,9 @@ import { COMMUNITY, SEMINAR, isPast, type Seminar } from "../data/community";
 // every failure path falls back to the copy bundled in data/community.ts, so the
 // page renders the last-shipped edition rather than an empty section.
 
-const API_BASE = (import.meta.env.VITE_API_URL ?? "https://api.dubupay.com").replace(/\/$/, "");
+// dubu-social, NOT api.dubupay.com — that host is the separate dubu-api service
+// and 404s on /public/seminar. Same base the admin dashboard talks to.
+const API_BASE = (import.meta.env.VITE_API_URL ?? "https://lapai.dubupay.com").replace(/\/$/, "");
 const TIMEOUT_MS = 4000;
 
 interface ApiSeminar {

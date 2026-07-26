@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  /** Dubu Social API base, e.g. https://api.dubupay.com. Only used for the
-   *  public seminar fetch; the site falls back to bundled copy without it. */
+  /** dubu-social API base. Defaults to https://lapai.dubupay.com, which is
+   *  correct for production — only set this to point at a local backend.
+   *  NOT api.dubupay.com; that is the separate dubu-api service. */
   readonly VITE_API_URL?: string;
 }
 
