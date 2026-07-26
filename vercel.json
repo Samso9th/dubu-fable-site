@@ -1,5 +1,6 @@
 {
   "routes": [
+    { "src": "/seminar/?", "dest": "/api/seminar-og" },
     { "handle": "filesystem" },
     { "src": "/.*", "dest": "/index.html" }
   ]

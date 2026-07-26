@@ -1,13 +1,15 @@
 import { PageChrome } from "./PageChrome";
-import { COMMUNITY, SEMINAR, isPast } from "../data/community";
+import { COMMUNITY } from "../data/community";
+import { useSeminar } from "../lib/seminar";
 
 /**
  * Standalone /seminar page — the shareable one. Kept alive after the event so
  * links in broadcasts and flyers don't 404; it just flips to a "this one has
- * run, join the channel for the next" state.
+ * run, join the channel for the next" state. Content comes from the admin
+ * dashboard, falling back to the bundled copy if the API is unreachable.
  */
 export function SeminarPage() {
-  const seminar = SEMINAR;
+  const { seminar, joinUrl, past } = useSeminar();
 
   if (!seminar) {
     return (
@@ -17,12 +19,14 @@ export function SeminarPage() {
           No seminar is scheduled right now. Join {COMMUNITY.name} and you'll hear about the next
           one first.
         </p>
-        <JoinButton />
+        <JoinButton joinUrl={joinUrl} />
       </PageChrome>
     );
   }
 
-  const past = isPast(seminar);
+  const when = seminar.timeLabel
+    ? `${seminar.dateLabel}, ${seminar.timeLabel}`
+    : seminar.dateLabel;
 
   return (
     <PageChrome>
@@ -33,7 +37,7 @@ export function SeminarPage() {
             : "rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold"
         }
       >
-        {past ? "This event has ended" : `Free · Live · ${seminar.dateLabel}`}
+        {past ? "This event has ended" : `Free · Live · ${when}`}
       </span>
 
       <h1 className="mt-6 font-display text-4xl uppercase tracking-wide sm:text-5xl">
@@ -41,11 +45,13 @@ export function SeminarPage() {
       </h1>
       <p className="mt-5 text-lg leading-relaxed text-mist">{seminar.tagline}</p>
 
-      <img
-        src={seminar.flyer}
-        alt={`${seminar.title} flyer — ${seminar.dateLabel}`}
-        className="mt-10 w-full rounded-3xl border border-line"
-      />
+      {seminar.flyer && (
+        <img
+          src={seminar.flyer}
+          alt={`${seminar.title} flyer — ${seminar.dateLabel}`}
+          className="mt-10 w-full rounded-3xl border border-line"
+        />
+      )}
 
       {past ? (
         <>
@@ -91,16 +97,16 @@ export function SeminarPage() {
         </>
       )}
 
-      <JoinButton />
+      <JoinButton joinUrl={joinUrl} />
     </PageChrome>
   );
 }
 
-function JoinButton() {
+function JoinButton({ joinUrl }: { joinUrl: string }) {
   return (
     <div className="mt-10">
       <a
-        href={COMMUNITY.joinUrl}
+        href={joinUrl}
         target="_blank"
         rel="noreferrer"
         className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold"

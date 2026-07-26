@@ -2,23 +2,36 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useGSAP, revealUp } from "../lib/gsap";
 import { SectionHeading } from "./SectionHeading";
-import { COMMUNITY, upcomingSeminar } from "../data/community";
+import { COMMUNITY } from "../data/community";
+import { useSeminar } from "../lib/seminar";
 
 /**
  * Homepage band for Dubu Hustle HQ. Every CTA points at the wa.link, never the
  * channel invite itself — the Tier 2 gate lives on the bot side of that link.
- * The dated seminar card disappears on its own once the event has passed.
+ * The seminar is managed from the admin dashboard and the card drops itself
+ * once the event has passed.
  */
 export function Community() {
   const root = useRef<HTMLElement>(null);
-  const seminar = upcomingSeminar();
+  const { seminar: current, joinUrl, past } = useSeminar();
+  const seminar = current && !past ? current : null;
 
   useGSAP(
     () => {
       revealUp("[data-perk]", root.current!, { stagger: 0.1 });
-      revealUp("[data-seminar]", root.current!);
     },
     { scope: root }
+  );
+
+  // The seminar card arrives after the API call, i.e. after the mount-time
+  // reveal above has already run. Without its own pass keyed on the fetched
+  // seminar it would sit at the [data-reveal] default of opacity:0 forever.
+  useGSAP(
+    () => {
+      if (!root.current?.querySelector("[data-seminar]")) return;
+      revealUp("[data-seminar]", root.current);
+    },
+    { scope: root, dependencies: [seminar?.title ?? null], revertOnUpdate: true }
   );
 
   return (
@@ -59,15 +72,23 @@ export function Community() {
             data-reveal
             className="mt-10 overflow-hidden rounded-3xl border border-gold/25 bg-ink-soft/60"
           >
-            <div className="grid gap-0 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
-              <Link to="/seminar" className="block bg-ink">
-                <img
-                  src={seminar.flyer}
-                  alt={`${seminar.title} — ${seminar.dateLabel}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover"
-                />
-              </Link>
+            <div
+              className={
+                seminar.flyer
+                  ? "grid gap-0 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]"
+                  : "grid gap-0"
+              }
+            >
+              {seminar.flyer && (
+                <Link to="/seminar" className="block bg-ink">
+                  <img
+                    src={seminar.flyer}
+                    alt={`${seminar.title} — ${seminar.dateLabel}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </Link>
+              )}
 
               <div className="flex flex-col justify-center p-8 sm:p-10">
                 <span className="w-fit rounded-full border border-gold/30 bg-gold/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-gold">
@@ -82,7 +103,7 @@ export function Community() {
                 </p>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                   <a
-                    href={COMMUNITY.joinUrl}
+                    href={joinUrl}
                     target="_blank"
                     rel="noreferrer"
                     className="btn-gold inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 font-semibold"
@@ -104,7 +125,7 @@ export function Community() {
         {!seminar && (
           <div data-seminar data-reveal className="mt-10 flex justify-center">
             <a
-              href={COMMUNITY.joinUrl}
+              href={joinUrl}
               target="_blank"
               rel="noreferrer"
               className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold"

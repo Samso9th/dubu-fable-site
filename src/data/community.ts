@@ -43,14 +43,19 @@ export interface Seminar {
   /** ISO date — drives both the display string and the "past event" check. */
   date: string;
   dateLabel: string;
-  flyer: string;
+  timeLabel?: string | null;
+  flyer: string | null;
   bullets: string[];
 }
 
+// Fallback only. The live seminar comes from the API (see useSeminar below), so
+// this is what renders on a cold load or if the API is unreachable — the page
+// shows the last-shipped edition rather than breaking. Keep it roughly current,
+// but day-to-day changes belong in the admin dashboard, not here.
 export const SEMINAR: Seminar | null = {
-  title: "Dubu Dollar Jobs Seminar",
+  title: "The Global Paycheck",
   tagline:
-    "A free live session on finding remote work that pays in dollars — and getting that money into your hands without the usual wahala.",
+    "Finding remote work that pays in dollars — and getting that money home.",
   date: "2026-08-08",
   dateLabel: "8 August 2026",
   flyer:
@@ -66,10 +71,4 @@ export const SEMINAR: Seminar | null = {
 export function isPast(seminar: Seminar): boolean {
   // End of the event day, so the flyer doesn't vanish on the morning of.
   return Date.now() > new Date(`${seminar.date}T23:59:59`).getTime();
-}
-
-/** The seminar to advertise — null when there isn't one, or it's already run. */
-export function upcomingSeminar(): Seminar | null {
-  if (!SEMINAR) return null;
-  return isPast(SEMINAR) ? null : SEMINAR;
 }
