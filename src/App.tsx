@@ -12,6 +12,8 @@ import { Moments } from "./components/Moments";
 import { HowItWorks } from "./components/HowItWorks";
 import { Features } from "./components/Features";
 import { Trust } from "./components/Trust";
+import { Community } from "./components/Community";
+import { SeminarPage } from "./components/SeminarPage";
 import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
@@ -25,6 +27,7 @@ export default function App() {
       <Route path="/about" element={<InfoPage slug="about" />} />
       <Route path="/contact" element={<InfoPage slug="contact" />} />
       <Route path="/careers" element={<InfoPage slug="careers" />} />
+      <Route path="/seminar" element={<SeminarPage />} />
       <Route path="/privacy" element={<LegalPage slug="privacy" />} />
       <Route path="/terms" element={<LegalPage slug="terms" />} />
       <Route path="/cookies" element={<LegalPage slug="cookies" />} />
@@ -80,6 +83,7 @@ function Home() {
         <HowItWorks />
         <Features />
         <Trust />
+        <Community />
         <FAQ />
         <FinalCTA />
       </main>

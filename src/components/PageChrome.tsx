@@ -9,6 +9,7 @@ const LEGAL_LINKS = [
 
 const COMPANY_LINKS = [
   { to: "/about", label: "About" },
+  { to: "/seminar", label: "Seminar" },
   { to: "/contact", label: "Contact" },
   { to: "/careers", label: "Careers" },
 ];
