@@ -33,7 +33,7 @@ export const COMMUNITY = {
   steps: [
     "Tap the join button — it opens a chat with Dubu on WhatsApp.",
     "Complete Tier 1 (selfie), then Tier 2 (ID verification). A few minutes each.",
-    "Tap the join link again once Tier 2 is approved and Dubu sends you the channel.",
+    "Once Tier 2 is approved, Dubu sends you a Join community button — tap it and you're in.",
   ],
 } as const;
 
