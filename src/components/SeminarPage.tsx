@@ -1,15 +1,22 @@
 import { PageChrome } from "./PageChrome";
 import { COMMUNITY } from "../data/community";
 import { useSeminar } from "../lib/seminar";
+import { track, usePageView } from "../lib/track";
+
+const PAGE = "/seminar";
 
 /**
  * Standalone /seminar page — the shareable one. Kept alive after the event so
  * links in broadcasts and flyers don't 404; it just flips to a "this one has
  * run, join the channel for the next" state. Content comes from the admin
  * dashboard, falling back to the bundled copy if the API is unreachable.
+ *
+ * This is the page ads point at, so it reports views and CTA taps back to the
+ * dashboard, attributed to the ?src= on whichever link brought the visitor in.
  */
 export function SeminarPage() {
   const { seminar, joinUrl, past } = useSeminar();
+  usePageView(PAGE);
 
   if (!seminar) {
     return (
@@ -19,7 +26,7 @@ export function SeminarPage() {
           No seminar is scheduled right now. Join {COMMUNITY.name} and you'll hear about the next
           one first.
         </p>
-        <JoinButton joinUrl={joinUrl} />
+        <JoinButton joinUrl={joinUrl} label="join-no-seminar" />
       </PageChrome>
     );
   }
@@ -97,18 +104,20 @@ export function SeminarPage() {
         </>
       )}
 
-      <JoinButton joinUrl={joinUrl} />
+      <JoinButton joinUrl={joinUrl} label={past ? "join-past" : "join"} />
     </PageChrome>
   );
 }
 
-function JoinButton({ joinUrl }: { joinUrl: string }) {
+function JoinButton({ joinUrl, label = "join" }: { joinUrl: string; label?: string }) {
   return (
     <div className="mt-10">
       <a
         href={joinUrl}
         target="_blank"
         rel="noreferrer"
+        // sendBeacon, so the event survives the tab handing off to WhatsApp.
+        onClick={() => track("cta_click", PAGE, label)}
         className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold"
       >
         Join {COMMUNITY.name} <span aria-hidden>→</span>
