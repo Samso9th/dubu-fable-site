@@ -13,7 +13,7 @@ interface LegalDoc {
 export const LEGAL_PAGES: Record<LegalSlug, LegalDoc> = {
   privacy: {
     title: "Privacy Policy",
-    updated: "May 2026",
+    updated: "August 2026",
     sections: [
       {
         heading: "1. Information We Collect",
@@ -34,38 +34,45 @@ export const LEGAL_PAGES: Record<LegalSlug, LegalDoc> = {
         ],
       },
       {
-        heading: "4. Data Security",
+        heading: "4. Identity Verification and Account Opening",
+        body: [
+          "When you verify your identity, your BVN, selfie, phone number, and bank account details are shared with our licensed verification and banking partners solely to confirm your identity and to open and operate the DubuPay NGN account held in your name. We retain an encrypted record of verification results so that you are not asked to verify the same identity twice.",
+          "Verification records may be reused to satisfy a later verification request about the same identity, including one made by another business using DubuPay, but only where that business already holds your identifying details and the check succeeds. We do not operate a directory and your details cannot be looked up by anyone who does not already have them.",
+        ],
+      },
+      {
+        heading: "5. Data Security",
         body: [
           "We use 256-bit encryption, PCI DSS compliant infrastructure, and biometric verification to protect your data. All transactions require explicit PIN confirmation before processing.",
         ],
       },
       {
-        heading: "5. Data Retention",
+        heading: "6. Data Retention",
         body: [
           "Transaction records are retained for the period required by applicable financial regulations. You may request deletion of non-essential personal data by contacting our support team.",
         ],
       },
       {
-        heading: "6. Your Rights",
+        heading: "7. Your Rights",
         body: [
           "You have the right to access, correct, or delete your personal data. You may also withdraw consent for non-essential data processing at any time by messaging Dubu on WhatsApp or contacting us at privacy@dubupay.com.",
         ],
       },
       {
-        heading: "7. Changes to This Policy",
+        heading: "8. Changes to This Policy",
         body: [
           "We may update this policy from time to time. We will notify you of significant changes through WhatsApp or on our website. Continued use of the service after changes constitutes acceptance.",
         ],
       },
       {
-        heading: "8. Contact Us",
+        heading: "9. Contact Us",
         body: ["For privacy-related inquiries, contact us at privacy@dubupay.com or message Dubu on WhatsApp."],
       },
     ],
   },
   terms: {
     title: "Terms of Service",
-    updated: "May 2026",
+    updated: "August 2026",
     sections: [
       {
         heading: "1. Acceptance of Terms",
@@ -86,43 +93,52 @@ export const LEGAL_PAGES: Record<LegalSlug, LegalDoc> = {
         ],
       },
       {
-        heading: "4. Transaction Confirmation",
+        heading: "4. Account Provisioning and Identity Verification",
+        body: [
+          "To complete identity verification (Tier 1), we are required to submit your Bank Verification Number (BVN), a selfie, your phone number, and a designated Nigerian bank account to our licensed verification and payment partners.",
+          "So that we never have to ask you for a separate bank account, we provision a dedicated DubuPay NGN account in your name, through our licensed banking partner, at the point you begin verification. This account is created for you automatically as part of setting up your DubuPay wallet, and its details are submitted to our verification partner to complete your Tier 1 check and to enable funding of your wallet.",
+          "By creating a DubuPay account and starting verification, you authorise us and our banking partners to open and operate this account on your behalf. The account belongs to you, is held in your name, and is shown to you in the app once your verification is complete. You may request its closure at any time by contacting support, which will also close your DubuPay wallet.",
+          "No funds are moved into or out of this account without your explicit instruction, and we do not use it for any purpose other than operating your DubuPay wallet.",
+        ],
+      },
+      {
+        heading: "5. Transaction Confirmation",
         body: [
           "All transactions require your explicit confirmation before processing. Once confirmed, transactions cannot be reversed. You are responsible for verifying recipient details before confirming any transfer.",
         ],
       },
       {
-        heading: "5. Fees and Exchange Rates",
+        heading: "6. Fees and Exchange Rates",
         body: [
           "Fees and exchange rates are clearly displayed before each transaction. Rates are locked for 60 seconds from the time they are quoted. We reserve the right to modify fee structures with advance notice.",
         ],
       },
       {
-        heading: "6. Prohibited Uses",
+        heading: "7. Prohibited Uses",
         body: [
           "You may not use Dubu for money laundering, terrorist financing, fraud, or any other illegal activity. We reserve the right to suspend or terminate accounts that violate these terms or applicable laws.",
         ],
       },
       {
-        heading: "7. Limitation of Liability",
+        heading: "8. Limitation of Liability",
         body: [
           "Dubu is not liable for delays caused by banking networks, incorrect recipient details provided by you, or service interruptions beyond our control. Our liability is limited to the transaction amount in dispute.",
         ],
       },
       {
-        heading: "8. Dispute Resolution",
+        heading: "9. Dispute Resolution",
         body: [
           "Any disputes arising from these terms shall be resolved through mediation first. If mediation fails, disputes shall be settled under the laws of the Federal Republic of Nigeria.",
         ],
       },
       {
-        heading: "9. Changes to Terms",
+        heading: "10. Changes to Terms",
         body: [
           "We may update these terms at any time. Material changes will be communicated via WhatsApp or our website. Continued use after changes constitutes acceptance.",
         ],
       },
       {
-        heading: "10. Contact",
+        heading: "11. Contact",
         body: ["For questions about these terms, contact us at legal@dubupay.com or message Dubu on WhatsApp."],
       },
     ],
