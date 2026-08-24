@@ -59,13 +59,21 @@ export const LEGAL_PAGES: Record<LegalSlug, LegalDoc> = {
         ],
       },
       {
-        heading: "8. Changes to This Policy",
+        heading: "8. AI Assistant",
+        body: [
+          "Dubu is an AI assistant. When you message Dubu on WhatsApp, your message and the account context needed to answer it are sent to our third-party AI model provider, OpenRouter, and the model provider it routes to, so a reply can be generated. Your PIN, BVN and full bank details are never sent to these providers.",
+          "The assistant can misunderstand you or be wrong. Every transaction it prepares is shown to you for explicit confirmation, and nothing moves until you confirm it with your PIN. We instruct our model providers not to retain your messages beyond what is needed to return a response, and not to train on them.",
+          "You can ask to speak to a human at any time by replying with \"agent\", and you may contact privacy@dubupay.com to object to this processing.",
+        ],
+      },
+      {
+        heading: "9. Changes to This Policy",
         body: [
           "We may update this policy from time to time. We will notify you of significant changes through WhatsApp or on our website. Continued use of the service after changes constitutes acceptance.",
         ],
       },
       {
-        heading: "9. Contact Us",
+        heading: "10. Contact Us",
         body: ["For privacy-related inquiries, contact us at privacy@dubupay.com or message Dubu on WhatsApp."],
       },
     ],
@@ -126,19 +134,31 @@ export const LEGAL_PAGES: Record<LegalSlug, LegalDoc> = {
         ],
       },
       {
-        heading: "9. Dispute Resolution",
+        heading: "9. Your Content & Copyright",
         body: [
-          "Any disputes arising from these terms shall be resolved through mediation first. If mediation fails, disputes shall be settled under the laws of the Federal Republic of Nigeria.",
+          "You may send images, voice notes and other material to Dubu on WhatsApp. You keep ownership of it, and grant us a limited licence to process and store it only to operate the service for you.",
+          "You must have the right to send what you send, and must not send material that infringes anyone's copyright or is otherwise unlawful.",
+          "If you believe material processed by our service infringes your copyright, send a notice to legal@dubupay.com identifying the work, where the material appears, your contact details, and a statement that you believe in good faith the use is not authorised and that your notice is accurate. We will remove or disable material subject to a valid notice, give the person who sent it a chance to respond, and terminate the accounts of repeat infringers.",
         ],
       },
       {
-        heading: "10. Changes to Terms",
+        heading: "10. Dispute Resolution",
+        body: [
+          "These terms are governed by the laws of the Federal Republic of Nigeria.",
+          "Talk to us first: before starting formal proceedings, raise the dispute with us at legal@dubupay.com and give us 30 days to resolve it.",
+          "If we cannot resolve it, the dispute shall be finally settled by arbitration seated in Lagos, Nigeria, under the Arbitration and Mediation Act 2023, before a single arbitrator, in English.",
+          "Class action waiver: disputes must be brought in your individual capacity, and not as a plaintiff or class member in any purported class, collective, consolidated or representative proceeding. The arbitrator may not consolidate more than one person's claims.",
+          "Small claims: either of us may instead bring an individual claim in a small claims court. Nothing here removes any mandatory consumer-protection right you have, or your right to complain to the Central Bank of Nigeria or the Nigeria Data Protection Commission.",
+        ],
+      },
+      {
+        heading: "11. Changes to Terms",
         body: [
           "We may update these terms at any time. Material changes will be communicated via WhatsApp or our website. Continued use after changes constitutes acceptance.",
         ],
       },
       {
-        heading: "11. Contact",
+        heading: "12. Contact",
         body: ["For questions about these terms, contact us at legal@dubupay.com or message Dubu on WhatsApp."],
       },
     ],
