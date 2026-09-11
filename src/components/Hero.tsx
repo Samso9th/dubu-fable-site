@@ -67,7 +67,7 @@ export function Hero({ started }: { started: boolean }) {
           1
         );
 
-      // floating pills — gentle perpetual drift
+      // floating pills: gentle perpetual drift
       gsap.utils.toArray<HTMLElement>("[data-pill]").forEach((pill, i) => {
         gsap.to(pill, {
           y: i % 2 ? 14 : -14,
@@ -100,7 +100,7 @@ export function Hero({ started }: { started: boolean }) {
       id="top"
       className="relative flex min-h-svh items-center overflow-hidden pb-20 pt-28 lg:pb-8 lg:pt-16"
     >
-      {/* background glows — radial gradients (same soft glow, no blur-filter cost) */}
+      {/* background glows: radial gradients (same soft glow, no blur-filter cost) */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div
           className="absolute right-[-18%] top-[-28%] h-[820px] w-[820px] rounded-full"
@@ -144,7 +144,7 @@ export function Hero({ started }: { started: boolean }) {
             className="mt-6 max-w-md text-base leading-relaxed text-mist opacity-0 sm:text-lg"
           >
             The first international payment experience built natively for{" "}
-            {platform.name}. No apps to download, no forms — just say hi and
+            {platform.name}. No apps to download, no forms. Just say hi and
             start sending.
           </p>
 

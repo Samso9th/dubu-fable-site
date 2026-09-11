@@ -7,7 +7,7 @@ import { useSeminar } from "../lib/seminar";
 
 /**
  * Homepage band for Dubu Hustle HQ. Every CTA points at the wa.link, never the
- * channel invite itself — the Tier 2 gate lives on the bot side of that link.
+ * channel invite itself: the Tier 2 gate lives on the bot side of that link.
  * The seminar is managed from the admin dashboard and the card drops itself
  * once the event has passed.
  */
@@ -83,7 +83,7 @@ export function Community() {
                 <Link to="/seminar" className="block bg-ink">
                   <img
                     src={seminar.flyer}
-                    alt={`${seminar.title} — ${seminar.dateLabel}`}
+                    alt={`${seminar.title}, ${seminar.dateLabel}`}
                     loading="lazy"
                     className="h-full w-full object-cover"
                   />
@@ -99,7 +99,7 @@ export function Community() {
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-mist">{seminar.tagline}</p>
                 <p className="mt-4 text-sm leading-relaxed text-mist">
-                  It's hosted inside the channel — verified members get the link there.
+                  It's hosted inside the channel: verified members get the link there.
                 </p>
                 <div className="mt-7 flex flex-col gap-3 sm:flex-row">
                   <a

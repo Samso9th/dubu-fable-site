@@ -74,7 +74,7 @@ export function Moments() {
           kicker="Real life"
           title={
             <>
-              Every moment money needs to move —{" "}
+              Every moment money needs to move:{" "}
               <span className="text-gold">just tell Dubu</span>
             </>
           }

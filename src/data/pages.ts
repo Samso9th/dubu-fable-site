@@ -33,7 +33,7 @@ interface InfoDoc {
 export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
   about: {
     title: "About Dubu",
-    lead: "Dubu is the first international payment experience built natively for the chat apps you already use — WhatsApp, Telegram, Slack, and Discord. We make it possible to send money worldwide by simply chatting — no apps, no forms, no friction.",
+    lead: "Dubu is the first international payment experience built natively for the chat apps you already use: WhatsApp, Telegram, Slack, and Discord. We make it possible to send money worldwide by simply chatting. No apps to download and no forms to fill in.",
     blocks: [
       {
         type: "text",
@@ -64,7 +64,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
           {
             title: "Simplicity",
             description:
-              "We strip away the complexity of cross-border payments so you can focus on what matters — the people you're sending to.",
+              "We strip away the complexity of cross-border payments so you can focus on what matters: the people you're sending to.",
           },
         ],
       },
@@ -80,7 +80,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
           {
             title: "Chat with Us",
             description:
-              "The fastest way to reach us — right in your favorite chat app.",
+              "The fastest way to reach us, right in your favorite chat app.",
             action: {
               label: "Chat with Dubu",
               href: "https://wa.link/6l25x0",
@@ -98,7 +98,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
   },
   careers: {
     title: "Careers",
-    lead: "We're building conversational payments for the world. If you're passionate about fintech, AI, and making an impact — we'd love to hear from you.",
+    lead: "We're building conversational payments for the world. If you're passionate about fintech, AI, and making an impact, we'd love to hear from you.",
     blocks: [
       {
         type: "note",
@@ -115,7 +115,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
             title: "UI/UX Designer",
             meta: "Full-time / Remote",
             description:
-              "We're looking for a UI/UX Designer to shape the visual and interaction design of Dubu's products — from our marketing sites to the conversational payment flows inside chat apps like WhatsApp and Telegram.",
+              "We're looking for a UI/UX Designer to shape the visual and interaction design of Dubu's products, from our marketing sites to the conversational payment flows inside chat apps like WhatsApp and Telegram.",
             responsibilities: [
               "Design intuitive user interfaces for web and conversational (chat-based) experiences",
               "Create wireframes, prototypes, and high-fidelity mockups in Figma",
@@ -137,7 +137,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
             title: "Frontend Developer",
             meta: "Full-time / Remote",
             description:
-              "We need a Frontend Developer to build and refine Dubu's web experiences — performant marketing sites, dashboards, and interactive components that bring our brand to life.",
+              "We need a Frontend Developer to build and refine Dubu's web experiences: performant marketing sites, dashboards, and interactive components that bring our brand to life.",
             responsibilities: [
               "Build responsive, accessible web applications using Next.js, TypeScript, and Tailwind CSS",
               "Implement smooth animations and micro-interactions with Framer Motion",
@@ -159,7 +159,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
             title: "DevOps Engineer",
             meta: "Full-time / Remote",
             description:
-              "We're hiring a DevOps Engineer to build and maintain the infrastructure that powers Dubu's payment platform — ensuring reliability, security, and scalability as we grow.",
+              "We're hiring a DevOps Engineer to build and maintain the infrastructure that powers Dubu's payment platform, ensuring reliability, security, and scalability as we grow.",
             responsibilities: [
               "Design, deploy, and manage cloud infrastructure (AWS, GCP, or similar)",
               "Build and maintain CI/CD pipelines for automated testing and deployment",
@@ -181,7 +181,7 @@ export const INFO_PAGES: Record<InfoSlug, InfoDoc> = {
             title: "Marketing Specialist & Strategist",
             meta: "Full-time / Remote",
             description:
-              "We're looking for a Marketing Specialist & Strategist to drive Dubu's growth across digital channels — building brand awareness, generating leads, and telling the story of conversational payments.",
+              "We're looking for a Marketing Specialist & Strategist to drive Dubu's growth across digital channels, building brand awareness, generating leads, and telling the story of conversational payments.",
             responsibilities: [
               "Develop and execute marketing strategies across social media, email, content, and paid channels",
               "Create compelling copy and content that resonates with our target audiences across Africa and diaspora communities",

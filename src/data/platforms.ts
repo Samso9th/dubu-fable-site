@@ -22,7 +22,7 @@ export const PLATFORM_IDS: PlatformId[] = [
 ];
 
 // TODO: replace the Telegram/Slack/Discord placeholder links with the real
-// bot links once they exist — this is the only place they live.
+// bot links once they exist: this is the only place they live.
 export const PLATFORMS: Record<PlatformId, Platform> = {
   whatsapp: {
     id: "whatsapp",

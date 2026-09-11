@@ -9,12 +9,12 @@
 
 /* ── Dubu design tokens ── */
 @theme {
-  /* Surfaces — near-black forest green */
+  /* Surfaces: near-black forest green */
   --color-ink: hsl(152 46% 5%);
   --color-ink-soft: hsl(150 38% 8%);
   --color-ink-raised: hsl(148 32% 11%);
 
-  /* Paper — warm ivory for light sections */
+  /* Paper: warm ivory for light sections */
   --color-paper: hsl(46 42% 94%);
   --color-paper-soft: hsl(45 35% 89%);
 
@@ -41,7 +41,7 @@
 }
 
 /* ── Platform theme vars (WhatsApp defaults) ──
-   Swapped per platform via html[data-theme=...]. Colors only — layout and
+   Swapped per platform via html[data-theme=...]. Colors only: layout and
    animation never change between themes. */
 :root {
   --glow-accent: hsl(142 70% 49% / 0.14);
@@ -87,7 +87,7 @@ html[data-theme="telegram"] {
 }
 
 html[data-theme="slack"] {
-  /* Site accent is a lightened aubergine — authentic #4A154B fails contrast
+  /* Site accent is a lightened aubergine: authentic #4A154B fails contrast
      on ink, so the true brand color lives on the phone header instead. */
   --color-accent: hsl(291 38% 56%);
   --color-accent-soft: hsl(291 40% 22%);
@@ -400,7 +400,7 @@ body {
     0 0 120px -40px var(--glow-accent-strong);
 }
 
-/* initial-hidden elements revealed by GSAP — avoid FOUC flash of unstyled position */
+/* initial-hidden elements revealed by GSAP: avoid FOUC flash of unstyled position */
 [data-reveal] {
   opacity: 0;
 }

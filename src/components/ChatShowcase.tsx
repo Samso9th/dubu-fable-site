@@ -39,7 +39,7 @@ export function ChatShowcase() {
         <SectionHeading
           kicker="Conversational"
           title="Talk to Dubu like a friend"
-          blurb="No special commands or menus. Text it, say it, or snap it — Dubu understands however you communicate."
+          blurb="No special commands or menus. Text it, say it, or snap it. Dubu understands however you communicate."
         />
 
         {isDesktop ? (

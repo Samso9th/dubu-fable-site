@@ -6,7 +6,7 @@ import { track, usePageView } from "../lib/track";
 const PAGE = "/seminar";
 
 /**
- * Standalone /seminar page — the shareable one. Kept alive after the event so
+ * Standalone /seminar page, the shareable one. Kept alive after the event so
  * links in broadcasts and flyers don't 404; it just flips to a "this one has
  * run, join the channel for the next" state. Content comes from the admin
  * dashboard, falling back to the bundled copy if the API is unreachable.
@@ -55,7 +55,7 @@ export function SeminarPage() {
       {seminar.flyer && (
         <img
           src={seminar.flyer}
-          alt={`${seminar.title} flyer — ${seminar.dateLabel}`}
+          alt={`${seminar.title} flyer, ${seminar.dateLabel}`}
           className="mt-10 w-full rounded-3xl border border-line"
         />
       )}
@@ -66,7 +66,7 @@ export function SeminarPage() {
             Missed it?
           </h2>
           <p className="mt-4 leading-relaxed text-mist">
-            This session has already run. Join {COMMUNITY.name} — that's where we announce every
+            This session has already run. Join {COMMUNITY.name}: that's where we announce every
             seminar, and where the replays and job drops land.
           </p>
         </>
@@ -89,7 +89,7 @@ export function SeminarPage() {
           <h2 className="mt-12 font-display text-2xl uppercase tracking-wide">How to attend</h2>
           <p className="mt-4 leading-relaxed text-mist">
             The seminar is hosted inside {COMMUNITY.name}, our members-only WhatsApp channel. It's
-            open to Tier 2 verified Dubu members — here's how to get in:
+            open to Tier 2 verified Dubu members. Here's how to get in:
           </p>
           <ol className="mt-5 space-y-4">
             {COMMUNITY.steps.map((step, i) => (

@@ -80,7 +80,7 @@ function BlockView({ block }: { block: Block }) {
               <ul className="mt-3 space-y-2 text-sm text-mist">
                 {job.responsibilities.map((r) => (
                   <li key={r} className="flex gap-2">
-                    <span className="mt-1 shrink-0 text-gold">–</span>
+                    <span className="mt-1 shrink-0 text-gold">•</span>
                     {r}
                   </li>
                 ))}
@@ -91,7 +91,7 @@ function BlockView({ block }: { block: Block }) {
                   <ul className="mt-3 space-y-2 text-sm text-mist">
                     {job.requirements.map((r) => (
                       <li key={r} className="flex gap-2">
-                        <span className="mt-1 shrink-0 text-gold">–</span>
+                        <span className="mt-1 shrink-0 text-gold">•</span>
                         {r}
                       </li>
                     ))}

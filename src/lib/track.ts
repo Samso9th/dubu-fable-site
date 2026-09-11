@@ -7,8 +7,8 @@ import { useEffect } from "react";
 // What it records: which link someone arrived on, that the page rendered, and
 // whether they tapped the CTA through to WhatsApp. What it does not record: any
 // identity. The visitor id below is a random string the browser mints for
-// itself — its only job is telling "12 views" apart from "one person
-// refreshing" — and nothing here reads a name, number or account.
+// itself: its only job is telling "12 views" apart from "one person
+// refreshing", and nothing here reads a name, number or account.
 //
 // Tracking must never be able to break the page: every send is fire-and-forget,
 // every failure is swallowed, and nothing on the render path waits on it.
@@ -29,7 +29,7 @@ function safeGet(store: Storage, key: string): string | null {
   try {
     return store.getItem(key);
   } catch {
-    return null; // Safari private mode, blocked storage — tracking degrades, page doesn't.
+    return null; // Safari private mode, blocked storage: tracking degrades, page doesn't.
   }
 }
 
@@ -58,7 +58,7 @@ function visitorId(): string {
 /**
  * The source is captured on arrival and held for the session. Without that, a
  * CTA click would report as 'direct' the moment the visitor navigates away from
- * the ?src= URL — and the CTA is the number the ad is actually judged on.
+ * the ?src= URL, and the CTA is the number the ad is actually judged on.
  */
 function attribution(): { source: string; campaign: string | null } {
   const params = new URLSearchParams(window.location.search);
@@ -85,7 +85,7 @@ function device(): "mobile" | "desktop" {
 }
 
 /**
- * text/plain on purpose — it keeps the request "simple" so the browser skips
+ * text/plain on purpose: it keeps the request "simple" so the browser skips
  * the CORS preflight, which the API's origin allowlist would reject. The server
  * parses the JSON itself. sendBeacon because a CTA click navigates away
  * immediately and a normal fetch would be cancelled with it.
@@ -113,7 +113,7 @@ function send(payload: Record<string, unknown>): void {
 
 export function track(event: TrackEvent, page: string, label?: string): void {
   if (typeof window === "undefined") return;
-  // Keep the dashboard honest — local development is not campaign traffic.
+  // Keep the dashboard honest: local development is not campaign traffic.
   if (import.meta.env.DEV) return;
 
   const { source, campaign } = attribution();

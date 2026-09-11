@@ -43,7 +43,7 @@ export const HERO_CHAT: ChatMessage[] = [
   { from: "user", voice: "0:03", time: "10:31" },
   {
     from: "dubu",
-    text: "Send $200 to Mama — GTBank ····6789.\nRate locked: ₦1,580/$.\nDoes that look right?",
+    text: "Send $200 to Mama, GTBank ····6789.\nRate locked: ₦1,580/$.\nDoes that look right?",
     time: "10:31",
   },
   { from: "user", text: "Yes, send it!", time: "10:32" },
@@ -64,7 +64,7 @@ export const DEMO_TABS: DemoTab[] = [
     label: "Send money",
     headline: "Plain words, real money",
     blurb:
-      "“Abeg send $100 go Lagos” works just fine. Dubu sorts the rate, the fee, and the delivery — you only confirm.",
+      "“Abeg send $100 go Lagos” works just fine. Dubu sorts the rate, the fee, and the delivery. You only confirm.",
     messages: [
       { from: "user", text: "Abeg help me send $100 go Lagos" },
       { from: "dubu", text: "Sure! Who should I send it to?" },
@@ -92,7 +92,7 @@ export const DEMO_TABS: DemoTab[] = [
     label: "Check rates",
     headline: "Rates that beat your bank",
     blurb:
-      "Ask for today's rates any time. They lock for 60 seconds when you send — no hidden markups, no surprises.",
+      "Ask for today's rates any time. They lock for 60 seconds when you send. No hidden markups, no surprises.",
     messages: [
       { from: "user", text: "What's the rate for GBP to NGN?" },
       {
@@ -160,7 +160,7 @@ export const MOMENTS: Moment[] = [
     category: "Family",
     situation: "You've been meaning to send something to your parents. It's been a week.",
     before: "Open app. Find account. Transfer. Hope it worked.",
-    reply: "Send $200 to Mama — GTBank. Confirm?",
+    reply: "Send $200 to Mama, GTBank. Confirm?",
   },
   {
     category: "On the road",
@@ -178,19 +178,19 @@ export const MOMENTS: Moment[] = [
     category: "Data · Airtime",
     situation: "Data finished in the middle of something. Always at the worst time.",
     before: "Open an app. Navigate. Buy. Wait.",
-    reply: "Recharge 10GB MTN — ₦3,500. Do it?",
+    reply: "Recharge 10GB MTN, ₦3,500. Do it?",
   },
   {
     category: "Crypto",
     situation: "You've got USDT on Binance and rent is due.",
     before: "Open P2P. Find a seller. Bargain rate. Pray they don't ghost.",
-    reply: "Sell 50 USDT at ₦1,540 — ₦77,000 to your wallet. Confirm?",
+    reply: "Sell 50 USDT at ₦1,540, ₦77,000 to your wallet. Confirm?",
   },
   {
     category: "Bills",
     situation: "DSTV expired. You found out when your family called at 9PM.",
     before: "Open app. Billers. Smart card number. Which package?",
-    reply: "DSTV is due tomorrow — ₦8,500. Shall I sort it?",
+    reply: "DSTV is due tomorrow, ₦8,500. Shall I sort it?",
   },
   {
     category: "Friends",
@@ -227,7 +227,7 @@ export const STEPS = (platformName: string) => [
 export const FEATURES = (platformName: string) => [
   {
     title: "Chat to send",
-    body: "Save Dubu as a contact. Send money by simply chatting — like texting a friend.",
+    body: "Save Dubu as a contact. Send money by simply chatting, like texting a friend.",
   },
   {
     title: "Instant receipts",
@@ -246,7 +246,7 @@ export const FEATURES = (platformName: string) => [
 export const PARTNERS = [
   {
     title: "Powered by Dubu Business API",
-    body: "Built on Dubu's own payment infrastructure — the same API trusted by merchants across Africa.",
+    body: "Built on Dubu's own payment infrastructure, the same API trusted by merchants across Africa.",
     logos: ["/icon.png"],
   },
   {
@@ -256,7 +256,7 @@ export const PARTNERS = [
   },
   {
     title: "NDIC-insured deposits",
-    body: "Your funds are held in NDIC-insured accounts via Interswitch — the same statutory protection as any Nigerian bank deposit.",
+    body: "Your funds are held in NDIC-insured accounts via Interswitch, the same statutory protection as any Nigerian bank deposit.",
     logos: ["/ndic-cbn.png"],
   },
 ];
@@ -283,7 +283,7 @@ export const FAQS = [
   },
   {
     q: "Is my chat data private?",
-    a: "Absolutely. Your conversations with Dubu are end-to-end encrypted. We can only see the transaction details necessary to process your transfer — never your personal messages. We never share or sell your data.",
+    a: "Absolutely. Your conversations with Dubu are end-to-end encrypted. We can only see the transaction details necessary to process your transfer, never your personal messages. We never share or sell your data.",
   },
   {
     q: "What are the fees?",

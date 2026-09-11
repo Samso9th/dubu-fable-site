@@ -7,7 +7,7 @@ import { COMMUNITY, SEMINAR, isPast, type Seminar } from "../data/community";
 // every failure path falls back to the copy bundled in data/community.ts, so the
 // page renders the last-shipped edition rather than an empty section.
 
-// dubu-social, NOT api.dubupay.com — that host is the separate dubu-api service
+// dubu-social, NOT api.dubupay.com: that host is the separate dubu-api service
 // and 404s on /public/seminar. Same base the admin dashboard talks to.
 const API_BASE = (import.meta.env.VITE_API_URL ?? "https://lapai.dubupay.com").replace(/\/$/, "");
 const TIMEOUT_MS = 4000;
@@ -36,7 +36,7 @@ function toSeminar(s: ApiSeminar): Seminar {
 }
 
 export interface SeminarState {
-  /** The seminar to render — API result if we got one, else the bundled copy. */
+  /** The seminar to render: API result if we got one, else the bundled copy. */
   seminar: Seminar | null;
   /** Where to send people. Also API-backed so the wa.link can be rotated. */
   joinUrl: string;
@@ -55,7 +55,7 @@ export function useSeminar(): SeminarState {
 
   useEffect(() => {
     const controller = new AbortController();
-    // A slow API must never hold up the page — bail out and keep the fallback.
+    // A slow API must never hold up the page: bail out and keep the fallback.
     const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
 
     fetch(`${API_BASE}/public/seminar`, { signal: controller.signal })
@@ -68,7 +68,7 @@ export function useSeminar(): SeminarState {
         });
       })
       .catch(() => {
-        // Network error, abort, non-2xx — the bundled copy already in state stands.
+        // Network error, abort, non-2xx: the bundled copy already in state stands.
       })
       .finally(() => clearTimeout(timer));
 
