@@ -55,9 +55,12 @@ export function Community() {
               data-reveal
               className="rounded-3xl border border-line bg-ink-soft/60 p-7"
             >
-              <span aria-hidden className="text-3xl">
-                {perk.icon}
-              </span>
+              <img
+                src={perk.icon}
+                alt=""
+                loading="lazy"
+                className="h-9 w-9 object-contain"
+              />
               <h3 className="mt-5 font-display text-xl uppercase tracking-wide text-cream">
                 {perk.title}
               </h3>

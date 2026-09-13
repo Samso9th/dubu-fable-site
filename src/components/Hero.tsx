@@ -5,6 +5,11 @@ import { HERO_CHAT } from "../data/content";
 import { usePlatform } from "../lib/theme";
 import { PLATFORM_IDS, PLATFORMS } from "../data/platforms";
 import { PlatformIcon } from "./PlatformIcons";
+import { PlatformCta } from "./PlatformCta";
+import { TelegramAppDemo } from "./phone/TelegramAppDemo";
+
+const TON_LOGO =
+  "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789308924/toncoin-3d-icon-png_v1oxim.png";
 
 const LINES = [
   { text: "Send money", cls: "text-cream" },
@@ -148,15 +153,28 @@ export function Hero({ started }: { started: boolean }) {
             start sending.
           </p>
 
+          {/* Telegram only: TON is live on Dubu. The badge stays in the DOM
+              (toggled with `hidden`) so the intro animation's inline styles
+              survive a platform switch after the intro has run. */}
+          <div
+            data-fade
+            className={`mt-5 w-fit items-center gap-2.5 rounded-full border border-accent/40 bg-accent/10 py-2 pl-2.5 pr-4 opacity-0 ${
+              platformId === "telegram" ? "flex" : "hidden"
+            }`}
+          >
+            <img src={TON_LOGO} alt="TON" className="h-6 w-6" loading="lazy" />
+            <span className="text-xs font-semibold text-cream">
+              Now supporting <span className="text-accent">TON native</span> on Dubu
+            </span>
+          </div>
+
           <div data-fade className="mt-9 flex flex-wrap items-center gap-4 opacity-0">
-            <a
-              href={platform.ctaUrl}
-              target="_blank"
-              rel="noreferrer"
+            <PlatformCta
+              platform={platform}
               className="btn-gold inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-semibold"
             >
               Get Started <span aria-hidden>→</span>
-            </a>
+            </PlatformCta>
             <a
               href="#how-it-works"
               className="btn-ghost inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-medium text-cream"
@@ -196,7 +214,19 @@ export function Hero({ started }: { started: boolean }) {
         {/* Phone */}
         <div data-phone-wrap className="relative flex justify-center lg:justify-end">
           <div data-phone className="relative opacity-0">
-            <PhoneChat messages={HERO_CHAT} mode="loop" play={started} />
+            {/* Telegram is a Mini App, not a chat bot: it renders the app flow
+                (dubu-tg-ui). The other platforms render the chat conversation,
+                anchored to the top of the screen like the showcase phone. */}
+            {platformId === "telegram" ? (
+              <TelegramAppDemo />
+            ) : (
+              <PhoneChat
+                messages={HERO_CHAT}
+                mode="loop"
+                play={started}
+                screenAlign="top"
+              />
+            )}
             {PILLS.map((p) => (
               <span
                 key={p.label}

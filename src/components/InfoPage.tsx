@@ -1,6 +1,7 @@
 import { PageChrome } from "./PageChrome";
 import { INFO_PAGES, type InfoSlug, type Block } from "../data/pages";
 import { usePlatform } from "../lib/theme";
+import { PlatformCta, platformCtaLabel } from "./PlatformCta";
 
 function BlockView({ block }: { block: Block }) {
   const { platform } = usePlatform();
@@ -41,18 +42,24 @@ function BlockView({ block }: { block: Block }) {
               {c.description && (
                 <p className="mt-2 text-sm leading-relaxed text-mist">{c.description}</p>
               )}
-              {c.action && (
-                <a
-                  href={c.action.platformCta ? platform.ctaUrl : c.action.href}
-                  target={c.action.href.startsWith("http") ? "_blank" : undefined}
-                  rel={c.action.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="mt-5 inline-flex rounded-full border border-line px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:border-gold/60 hover:text-gold"
-                >
-                  {c.action.platformCta
-                    ? `Chat on ${platform.name}`
-                    : c.action.label}
-                </a>
-              )}
+              {c.action &&
+                (c.action.platformCta ? (
+                  <PlatformCta
+                    platform={platform}
+                    className="mt-5 inline-flex rounded-full border border-line px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:border-gold/60 hover:text-gold"
+                  >
+                    {platformCtaLabel(platform)}
+                  </PlatformCta>
+                ) : (
+                  <a
+                    href={c.action.href}
+                    target={c.action.href.startsWith("http") ? "_blank" : undefined}
+                    rel={c.action.href.startsWith("http") ? "noreferrer" : undefined}
+                    className="mt-5 inline-flex rounded-full border border-line px-5 py-2.5 text-sm font-semibold text-cream transition-colors hover:border-gold/60 hover:text-gold"
+                  >
+                    {c.action.label}
+                  </a>
+                ))}
             </div>
           ))}
         </div>

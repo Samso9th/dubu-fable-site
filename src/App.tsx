@@ -14,6 +14,7 @@ import { Features } from "./components/Features";
 import { Trust } from "./components/Trust";
 import { Community } from "./components/Community";
 import { SeminarPage } from "./components/SeminarPage";
+import { BetaPage } from "./components/BetaPage";
 import { FAQ } from "./components/FAQ";
 import { FinalCTA } from "./components/FinalCTA";
 import { Footer } from "./components/Footer";
@@ -28,6 +29,7 @@ export default function App() {
       <Route path="/contact" element={<InfoPage slug="contact" />} />
       <Route path="/careers" element={<InfoPage slug="careers" />} />
       <Route path="/seminar" element={<SeminarPage />} />
+      <Route path="/beta" element={<BetaPage />} />
       <Route path="/privacy" element={<LegalPage slug="privacy" />} />
       <Route path="/terms" element={<LegalPage slug="terms" />} />
       <Route path="/cookies" element={<LegalPage slug="cookies" />} />

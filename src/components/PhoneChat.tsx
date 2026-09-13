@@ -11,6 +11,12 @@ type PhoneChatProps = {
   mode: "loop" | "instant";
   play?: boolean;
   className?: string;
+  /**
+   * Vertical anchor of the conversation inside the screen. The hero loop
+   * reads best anchored to the top (bubbles start under the header, like the
+   * ChatShowcase phone); the default keeps the old bottom anchoring.
+   */
+  screenAlign?: "top" | "bottom";
 };
 
 export function PhoneChat({
@@ -18,6 +24,7 @@ export function PhoneChat({
   mode,
   play = true,
   className = "",
+  screenAlign = "bottom",
 }: PhoneChatProps) {
   const root = useRef<HTMLDivElement>(null);
   const { platform, platformId } = usePlatform();
@@ -110,27 +117,38 @@ export function PhoneChat({
 
   const bubbles = platform.chatLayout === "bubbles";
 
+  // The beta tag sits outside the overflow-hidden frame so it can overhang the
+  // phone's corner like a sticker.
   return (
-    <div
-      ref={root}
-      className={`phone-frame relative w-[290px] shrink-0 overflow-hidden rounded-[2.4rem] sm:w-[320px] ${className}`}
-    >
-      <PhoneHeader platform={platform} />
+    <div ref={root} className={`relative w-[290px] shrink-0 sm:w-[320px] ${className}`}>
+      <div className="phone-frame relative overflow-hidden rounded-[2.4rem]">
+        <PhoneHeader platform={platform} />
 
-      {/* Messages */}
-      <div className="phone-screen relative flex h-[420px] flex-col justify-end overflow-hidden px-3 pb-3 pt-4 sm:h-[460px]">
-        <div className={`relative flex flex-col ${bubbles ? "gap-2.5" : "gap-3"}`}>
-          {messages.map((m, i) =>
-            bubbles ? (
-              <MessageBubble key={i} msg={m} />
-            ) : (
-              <MessageRow key={i} msg={m} platformId={platformId} />
-            )
-          )}
+        {/* Messages */}
+        <div
+          className={`phone-screen relative flex h-[420px] flex-col overflow-hidden px-3 pb-3 pt-4 sm:h-[460px] ${
+            screenAlign === "top" ? "justify-start" : "justify-end"
+          }`}
+        >
+          <div className={`relative flex flex-col ${bubbles ? "gap-2.5" : "gap-3"}`}>
+            {messages.map((m, i) =>
+              bubbles ? (
+                <MessageBubble key={i} msg={m} />
+              ) : (
+                <MessageRow key={i} msg={m} platformId={platformId} />
+              )
+            )}
+          </div>
         </div>
+
+        <PhoneInputBar platform={platform} />
       </div>
 
-      <PhoneInputBar platform={platform} />
+      {platform.beta && (
+        <span className="absolute -right-2 top-4 z-30 rotate-6 rounded-full bg-red-500 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white shadow-[0_8px_20px_-6px_rgba(239,68,68,0.7)]">
+          Beta
+        </span>
+      )}
     </div>
   );
 }

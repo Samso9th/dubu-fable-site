@@ -4,7 +4,14 @@ import { SectionHeading } from "./SectionHeading";
 import { FEATURES } from "../data/content";
 import { usePlatform } from "../lib/theme";
 
-const ICONS = ["💬", "🔔", "👥", "📈"];
+// Icon artwork, matching the Hustle HQ cards: the images render bare (no
+// containing tile), like the perk icons in the Community section.
+const ICONS = [
+  "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310120/A_message_icon_wmvxm5.png",
+  "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310120/A_bell_icon_bpzuul.png",
+  "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310120/A_contact_icon_ghtq2d.png",
+  "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310120/A_graph_icon_lci2yn.png",
+];
 
 export function Features() {
   const root = useRef<HTMLElement>(null);
@@ -34,9 +41,12 @@ export function Features() {
               data-reveal
               className="card-glow rounded-3xl p-7"
             >
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl border border-gold/25 bg-gold/[0.08] text-xl">
-                {ICONS[i]}
-              </span>
+              <img
+                src={ICONS[i]}
+                alt=""
+                loading="lazy"
+                className="h-10 w-10 object-contain"
+              />
               <h3 className="display-lg mt-6 !text-2xl text-cream">{f.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-mist">{f.body}</p>
             </div>

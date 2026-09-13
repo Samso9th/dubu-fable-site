@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "../lib/gsap";
 import { NAV_LINKS } from "../data/content";
 import { usePlatform } from "../lib/theme";
+import { PlatformCta } from "./PlatformCta";
 import { PLATFORM_IDS, PLATFORMS } from "../data/platforms";
 import { PlatformIcon } from "./PlatformIcons";
 
@@ -95,14 +96,12 @@ export function Navbar({ started }: { started: boolean }) {
 
           <div className="flex items-center gap-3">
             <PlatformSwitcher className="hidden md:flex" />
-            <a
-              href={platform.ctaUrl}
-              target="_blank"
-              rel="noreferrer"
+            <PlatformCta
+              platform={platform}
               className="btn-gold hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
             >
               Get Started
-            </a>
+            </PlatformCta>
             <button
               onClick={() => setOpen(!open)}
               aria-label={open ? "Close menu" : "Open menu"}
@@ -155,14 +154,12 @@ export function Navbar({ started }: { started: boolean }) {
             <span className="kicker text-mist">Platform</span>
             <PlatformSwitcher />
           </div>
-          <a
-            href={platform.ctaUrl}
-            target="_blank"
-            rel="noreferrer"
+          <PlatformCta
+            platform={platform}
             className="btn-gold inline-flex w-fit rounded-full px-7 py-3.5 font-semibold"
           >
             Get Started
-          </a>
+          </PlatformCta>
         </div>
       </div>
     </>

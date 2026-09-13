@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { gsap, useGSAP, prefersReducedMotion } from "../lib/gsap";
 import { NAV_LINKS, SOCIALS } from "../data/content";
 import { usePlatform } from "../lib/theme";
+import { PlatformCta } from "./PlatformCta";
 
 const LEGAL_LINKS = [
   { to: "/privacy", label: "Privacy" },
@@ -13,6 +14,7 @@ const LEGAL_LINKS = [
 const COMPANY_LINKS = [
   { to: "/about", label: "About" },
   { to: "/seminar", label: "Seminar" },
+  { to: "/beta", label: "Beta" },
   { to: "/contact", label: "Contact" },
   { to: "/careers", label: "Careers" },
 ];
@@ -55,14 +57,12 @@ export function Footer() {
               Send money worldwide without leaving {platform.name}. The
               simplest way to make international payments.
             </p>
-            <a
-              href={platform.ctaUrl}
-              target="_blank"
-              rel="noreferrer"
+            <PlatformCta
+              platform={platform}
               className="btn-gold mt-6 inline-flex rounded-full px-6 py-3 text-sm font-semibold"
             >
               Get Started
-            </a>
+            </PlatformCta>
           </div>
 
           <div>

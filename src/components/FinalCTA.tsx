@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { gsap, useGSAP, revealUp, prefersReducedMotion } from "../lib/gsap";
 import { usePlatform } from "../lib/theme";
+import { PlatformCta, platformCtaLabel } from "./PlatformCta";
 
 export function FinalCTA() {
   const root = useRef<HTMLElement>(null);
@@ -59,14 +60,12 @@ export function FinalCTA() {
           data-reveal
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
-          <a
-            href={platform.ctaUrl}
-            target="_blank"
-            rel="noreferrer"
+          <PlatformCta
+            platform={platform}
             className="btn-gold inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold"
           >
-            Chat on {platform.name} <span aria-hidden>→</span>
-          </a>
+            {platformCtaLabel(platform)} <span aria-hidden>→</span>
+          </PlatformCta>
         </div>
       </div>
     </section>

@@ -5,6 +5,12 @@ export type Platform = {
   name: string;
   /** Deep link the CTAs point to for this platform. */
   ctaUrl: string;
+  /**
+   * Slack & Discord are still in development: their CTAs route to the /beta
+   * page (explanation + signup form) until the integrations ship, instead of
+   * out to a bot link that doesn't exist yet.
+   */
+  beta: boolean;
   /** WA/TG render chat bubbles; Slack/Discord render left-aligned rows. */
   chatLayout: "bubbles" | "rows";
   /** Read-receipt style on sent messages. */
@@ -21,13 +27,18 @@ export const PLATFORM_IDS: PlatformId[] = [
   "discord",
 ];
 
-// TODO: replace the Telegram/Slack/Discord placeholder links with the real
-// bot links once they exist: this is the only place they live.
+// Slack & Discord app links: parked here until the integrations go live. Once
+// each bot ships, set `beta: false` on the platform below and the CTAs start
+// deep-linking out instead of routing to /beta.
+export const SLACK_APP_URL = "https://slack.com/apps/dubu"; // TODO: real Slack app link
+export const DISCORD_APP_URL = "https://discord.com/apps/dubu"; // TODO: real Discord app link
+
 export const PLATFORMS: Record<PlatformId, Platform> = {
   whatsapp: {
     id: "whatsapp",
     name: "WhatsApp",
     ctaUrl: "https://wa.link/6l25x0",
+    beta: false,
     chatLayout: "bubbles",
     receipts: "wa",
     statusLabel: "online",
@@ -36,7 +47,9 @@ export const PLATFORMS: Record<PlatformId, Platform> = {
   telegram: {
     id: "telegram",
     name: "Telegram",
-    ctaUrl: "https://t.me/dubupay",
+    // The Telegram experience is the Mini App: every CTA opens it.
+    ctaUrl: "https://t.me/dubupaybot",
+    beta: false,
     chatLayout: "bubbles",
     receipts: "tg",
     statusLabel: "online",
@@ -45,7 +58,8 @@ export const PLATFORMS: Record<PlatformId, Platform> = {
   slack: {
     id: "slack",
     name: "Slack",
-    ctaUrl: "https://slack.com/apps/dubu",
+    ctaUrl: SLACK_APP_URL,
+    beta: true,
     chatLayout: "rows",
     receipts: "none",
     statusLabel: "Active",
@@ -54,7 +68,8 @@ export const PLATFORMS: Record<PlatformId, Platform> = {
   discord: {
     id: "discord",
     name: "Discord",
-    ctaUrl: "https://discord.com/apps/dubu",
+    ctaUrl: DISCORD_APP_URL,
+    beta: true,
     chatLayout: "rows",
     receipts: "none",
     statusLabel: "Online",

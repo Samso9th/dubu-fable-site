@@ -15,17 +15,17 @@ export const COMMUNITY = {
     "A members-only WhatsApp channel for verified Dubu users: dollar-earning gigs, free live seminars, and rate alerts before they hit anywhere else.",
   perks: [
     {
-      icon: "💼",
+      icon: "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310528/B_briefcase_icon_asg0vw.png",
       title: "Dollar-earning gigs",
       body: "Remote roles and freelance briefs that pay in USD, dropped as we find them.",
     },
     {
-      icon: "🎓",
+      icon: "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310528/B_academic_hat_icon_ajqmt9.png",
       title: "Free live seminars",
       body: "Practical sessions on landing international work and getting paid without the usual headache.",
     },
     {
-      icon: "📈",
+      icon: "https://res.cloudinary.com/dhyo6y9rw/image/upload/v1789310120/A_graph_icon_lci2yn.png",
       title: "Rate alerts first",
       body: "Know when the rate moves in your favour before you convert.",
     },
